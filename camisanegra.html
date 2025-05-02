@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Camisa Negra - GÉNESIS</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+  <!-- Barra superior -->
+  <header class="barra-superior">
+    <nav>
+      <ul>
+        <li><a href="index.html">INICIO</a></li>
+        <li><a href="productos.html">PRODUCTOS</a></li>
+        <li><a href="https://www.instagram.com/genesis.1.00/" target="_blank">INSTAGRAM</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Detalle del producto -->
+  <main class="detalle-camisa">
+    <div class="slider">
+      <img id="slider-img" src="img/negra-frente.png" alt="Camisa Frente"/>
+      <button onclick="cambiarImagen('negra')">Cambiar Vista</button>
+    </div>
+
+    <div class="info-camisa">
+      <h1>Camisa Negra GÉNESIS</h1>
+      <p>$90.000 COP</p>
+      <label for="talla">Talla:</label>
+      <select id="talla">
+        <option>M</option>
+        <option>L</option>
+      </select>
+
+      <label for="cantidad">Cantidad:</label>
+      <input type="number" id="cantidad" min="1" value="1"/>
+
+      <button onclick="enviarWhatsApp('Camisa Negra')">Comprar por WhatsApp</button>
+
+      <button onclick="mostrarGuiaTallas()">Ver Guía de Tallas</button>
+      <img id="guia-tallas" src="img/guia-tallas.png" style="display:none; width: 100%; margin-top: 10px;"/>
+    </div>
+  </main>
+
+</body>
+</html>
