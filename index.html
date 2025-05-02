@@ -73,28 +73,28 @@
 
     .nav-menu-content {
       background-color: var(--white);
-      width: 300px;
+      width: 250px;
       height: 100%;
-      padding: 2.5rem;
+      padding: 2rem;
       display: flex;
       flex-direction: column;
       position: absolute;
       left: 0;
       top: 0;
-      box-shadow: 6px 0 15px rgba(0, 0, 0, 0.3);
+      box-shadow: 4px 0 12px rgba(0, 0, 0, 0.2);
     }
 
     .nav-menu-content a {
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       font-weight: bold;
       text-decoration: none;
       color: var(--black);
-      font-size: 1.2rem;
+      font-size: 1.1rem;
     }
 
     .nav-menu-close {
       align-self: flex-end;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       cursor: pointer;
       background: none;
       border: none;
@@ -102,8 +102,8 @@
     }
 
     .hero {
-      background: url('img/fondo-logo.png') no-repeat center center/contain;
-      height: 500px;
+      background: url('img/fondo-logo.png') no-repeat center center/cover;
+      height: 700px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -130,14 +130,14 @@
     }
 
     .about p {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       line-height: 1.6;
     }
 
     .slider {
       position: relative;
       width: 100%;
-      max-width: 600px;
+      max-width: 700px;
       margin: auto;
       overflow: hidden;
     }
@@ -170,26 +170,39 @@
     .selector label {
       display: block;
       margin-top: 1rem;
-      font-family: 'UnifrakturCook', cursive;
-      color: var(--gold);
-      font-size: 1.2rem;
+      font-weight: bold;
     }
 
-    .selector select, .selector input[type=number] {
-      padding: 0.5rem;
-      width: 100%;
-      max-width: 300px;
+    .selector .options {
+      display: flex;
+      gap: 1rem;
       margin-bottom: 1rem;
-      font-size: 1rem;
     }
 
-    .selector input[type=number] {
-      width: 80px;
-      text-align: center;
+    .circle-option {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.3s;
     }
 
-    .selector select:focus, .selector input[type=number]:focus {
-      outline: 2px solid var(--gold);
+    .circle-option:hover {
+      box-shadow: 0 0 5px var(--gold);
+    }
+
+    .circle-option.selected {
+      border: 2px solid var(--gold);
+      box-shadow: 0 0 10px var(--gold);
+    }
+
+    .circle-option span {
+      color: var(--gold);
+      font-weight: bold;
     }
 
     .whatsapp-button {
@@ -201,10 +214,6 @@
       border-radius: 6px;
       font-weight: bold;
       margin-top: 1rem;
-    }
-
-    .whatsapp-button:hover {
-      background-color: #c19e2d;
     }
 
     footer {
@@ -252,16 +261,16 @@
 
     <div class="selector">
       <label for="color">Color</label>
-      <select id="color" onchange="cambiarColor()">
-        <option value="negro">Negro</option>
-        <option value="crema">Crema</option>
-      </select>
+      <div class="options" id="colorOptions">
+        <div class="circle-option" data-value="Negro" style="background:#000;"></div>
+        <div class="circle-option" data-value="Crema" style="background:#f5e7c4;"></div>
+      </div>
 
       <label for="talla">Talla</label>
-      <select id="talla">
-        <option>M</option>
-        <option>L</option>
-      </select>
+      <div class="options" id="tallaOptions">
+        <div class="circle-option" data-value="M"><span>M</span></div>
+        <div class="circle-option" data-value="L"><span>L</span></div>
+      </div>
 
       <label for="cantidad">Cantidad</label>
       <input type="number" id="cantidad" value="1" min="1" max="5" />
@@ -295,17 +304,31 @@
       navMenu.style.display = navMenu.style.display === "flex" ? "none" : "flex";
     }
 
-    function cambiarColor() {
-      const color = document.getElementById("color").value;
-      if (color === "negro") currentSlide = 0;
-      else if (color === "crema") currentSlide = 2;
-      slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+    function selectOption(groupId, value) {
+      document.querySelectorAll(`#${groupId} .circle-option`).forEach(opt => {
+        opt.classList.remove("selected");
+        if (opt.dataset.value === value) {
+          opt.classList.add("selected");
+        }
+      });
     }
+
+    document.querySelectorAll('#colorOptions .circle-option').forEach(option => {
+      option.addEventListener('click', () => {
+        selectOption('colorOptions', option.dataset.value);
+      });
+    });
+
+    document.querySelectorAll('#tallaOptions .circle-option').forEach(option => {
+      option.addEventListener('click', () => {
+        selectOption('tallaOptions', option.dataset.value);
+      });
+    });
 
     document.getElementById("whatsappLink").addEventListener("click", function(e) {
       e.preventDefault();
-      const color = document.getElementById("color").value;
-      const talla = document.getElementById("talla").value;
+      const color = document.querySelector('#colorOptions .selected')?.dataset.value || "";
+      const talla = document.querySelector('#tallaOptions .selected')?.dataset.value || "";
       const cantidad = document.getElementById("cantidad").value;
       const mensaje = `Hola, quiero comprar la camiseta GÉNESIS.\nColor: ${color}\nTalla: ${talla}\nCantidad: ${cantidad}`;
       const url = `https://wa.me/573176650424?text=${encodeURIComponent(mensaje)}`;
