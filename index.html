@@ -30,6 +30,7 @@
       background-color: var(--white);
       font-family: 'Inter', sans-serif;
       color: var(--black);
+      overflow-x: hidden;
     }
 
     header {
@@ -192,6 +193,8 @@
       justify-content: center;
       cursor: pointer;
       transition: 0.3s;
+      min-width: 40px;
+      min-height: 40px;
     }
 
     .circle-option:hover {
@@ -243,6 +246,8 @@
       border-radius: 6px;
       font-weight: bold;
       margin-top: 1rem;
+      min-width: 40px;
+      min-height: 40px;
     }
 
     footer {
@@ -251,6 +256,38 @@
       text-align: center;
       font-size: 0.9rem;
       color: var(--gray);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 3rem;
+      }
+
+      .title {
+        font-size: 2rem;
+      }
+
+      .nav-menu-content {
+        width: 100%;
+      }
+
+      .slider, .slides img {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .about, .product, .contact {
+        padding: 4rem 1rem;
+      }
+
+      .about p, .contact p {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
