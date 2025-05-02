@@ -557,29 +557,6 @@
 
     // Initialize header visibility on page load
     updateHeaderVisibility();
-
-    function updateHeaderBackground() {
-      if (window.scrollY === 0) {
-        header.classList.add("transparent");
-      } else {
-        header.classList.remove("transparent");
-      }
-    }
-
-    window.addEventListener("scroll", updateHeaderBackground);
-
-    topDetectionArea.addEventListener("mouseenter", () => {
-      header.classList.remove("transparent");
-    });
-
-    topDetectionArea.addEventListener("mouseleave", () => {
-      if (window.scrollY === 0) {
-        header.classList.add("transparent");
-      }
-    });
-
-    // Initialize header background on page load
-    updateHeaderBackground();
   </script>
 </body>
 </html>
