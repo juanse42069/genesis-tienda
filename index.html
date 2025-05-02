@@ -46,6 +46,12 @@
       transition: background-color 0.3s ease, opacity 0.3s ease; /* Smooth transition for background and opacity */
     }
 
+    header.transparent {
+      background-color: transparent;
+      opacity: 0;
+      border-bottom: none;
+    }
+
     .menu-toggle {
       font-size: 1.8rem;
       cursor: pointer;
@@ -338,7 +344,7 @@
 </head>
 <body onload="window.scrollTo(0, 0)"> <!-- Evitar anclajes automáticos -->
   <div class="top-detection-area"></div>
-  <header class="hide-top-bar">
+  <header class="transparent">
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     <div class="title">GÉNESIS</div>
   </header>
@@ -551,6 +557,29 @@
 
     // Initialize header visibility on page load
     updateHeaderVisibility();
+
+    function updateHeaderBackground() {
+      if (window.scrollY === 0) {
+        header.classList.add("transparent");
+      } else {
+        header.classList.remove("transparent");
+      }
+    }
+
+    window.addEventListener("scroll", updateHeaderBackground);
+
+    topDetectionArea.addEventListener("mouseenter", () => {
+      header.classList.remove("transparent");
+    });
+
+    topDetectionArea.addEventListener("mouseleave", () => {
+      if (window.scrollY === 0) {
+        header.classList.add("transparent");
+      }
+    });
+
+    // Initialize header background on page load
+    updateHeaderBackground();
   </script>
 </body>
 </html>
