@@ -43,7 +43,7 @@
       top: 0;
       z-index: 1000;
       border-bottom: 1px solid #eee;
-      transition: background-color 0.3s ease; /* Smooth transition for background */
+      transition: background-color 0.3s ease, opacity 0.3s ease; /* Smooth transition for background and opacity */
     }
 
     .menu-toggle {
@@ -312,10 +312,33 @@
         font-size: 16px;
       }
     }
+
+    .top-detection-area {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      z-index: 1001;
+      pointer-events: auto;
+    }
+
+    header.hide-top-bar {
+      background-color: transparent !important;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    header.show-top-bar {
+      background-color: var(--white);
+      opacity: 1;
+      pointer-events: auto;
+    }
   </style>
 </head>
 <body onload="window.scrollTo(0, 0)"> <!-- Evitar anclajes automáticos -->
-  <header>
+  <div class="top-detection-area"></div>
+  <header class="hide-top-bar">
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     <div class="title">GÉNESIS</div>
   </header>
@@ -498,6 +521,36 @@
         header.classList.remove("hide-top-bar");
       }
     });
+
+    const header = document.querySelector("header");
+    const topDetectionArea = document.querySelector(".top-detection-area");
+
+    function updateHeaderVisibility() {
+      if (window.scrollY === 0) {
+        header.classList.add("hide-top-bar");
+        header.classList.remove("show-top-bar");
+      } else {
+        header.classList.add("show-top-bar");
+        header.classList.remove("hide-top-bar");
+      }
+    }
+
+    window.addEventListener("scroll", updateHeaderVisibility);
+
+    topDetectionArea.addEventListener("mouseenter", () => {
+      header.classList.add("show-top-bar");
+      header.classList.remove("hide-top-bar");
+    });
+
+    topDetectionArea.addEventListener("mouseleave", () => {
+      if (window.scrollY === 0) {
+        header.classList.add("hide-top-bar");
+        header.classList.remove("show-top-bar");
+      }
+    });
+
+    // Initialize header visibility on page load
+    updateHeaderVisibility();
   </script>
 </body>
 </html>
