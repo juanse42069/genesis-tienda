@@ -453,25 +453,22 @@
 
     // Swipe functionality for slider
     let startX = 0;
-    let endX = 0;
 
     slides.addEventListener("touchstart", (e) => {
       startX = e.touches[0].clientX;
     });
 
-    slides.addEventListener("touchmove", (e) => {
-      endX = e.touches[0].clientX;
-    });
-
-    slides.addEventListener("touchend", () => {
+    slides.addEventListener("touchend", (e) => {
+      const endX = e.changedTouches[0].clientX;
       const diffX = endX - startX;
+
       if (diffX > 50) {
         moveSlide(-1); // Swipe right
       } else if (diffX < -50) {
         moveSlide(1); // Swipe left
       }
-      startX = 0; // Reset values
-      endX = 0;
+
+      startX = 0; // Reset startX for the next gesture
     });
   </script>
 </body>
