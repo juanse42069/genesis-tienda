@@ -43,13 +43,6 @@
       top: 0;
       z-index: 1000;
       border-bottom: 1px solid #eee;
-      transition: background-color 0.3s ease, opacity 0.3s ease; /* Smooth transition for background and opacity */
-    }
-
-    header.transparent {
-      background-color: transparent;
-      opacity: 0;
-      border-bottom: none;
     }
 
     .menu-toggle {
@@ -320,31 +313,21 @@
     }
 
     .top-detection-area {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 60px;
-      z-index: 1001;
-      pointer-events: auto;
+      display: none; /* Ocultar esta área ya que no es necesaria */
     }
 
-    header.hide-top-bar {
-      background-color: transparent !important;
-      opacity: 0;
-      pointer-events: none;
-    }
-
+    header.transparent,
+    header.hide-top-bar,
     header.show-top-bar {
-      background-color: var(--white);
-      opacity: 1;
-      pointer-events: auto;
+      background-color: var(--white) !important; /* Asegurar fondo blanco */
+      opacity: 1 !important; /* Asegurar visibilidad */
+      pointer-events: auto !important;
     }
   </style>
 </head>
 <body onload="window.scrollTo(0, 0)"> <!-- Evitar anclajes automáticos -->
   <div class="top-detection-area"></div>
-  <header class="transparent">
+  <header>
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     <div class="title">GÉNESIS</div>
   </header>
@@ -427,7 +410,7 @@
     function toggleMenu() {
       const navMenu = document.getElementById("navMenu");
       const isMenuVisible = navMenu.classList.contains("show");
-      navMenu.style.display = isMenuVisible ? "none" : "flex"; // Mostrar u ocultar el menú
+      navMenu.style.display = isMenuVisible ? "none" : "flex";
       navMenu.classList.toggle("show");
     }
 
@@ -519,44 +502,10 @@
       startX = 0; // Reset startX for the next gesture
     });
 
-    window.addEventListener("scroll", function () {
-      const header = document.querySelector("header");
-      if (window.scrollY === 0) {
-        header.classList.add("hide-top-bar");
-      } else {
-        header.classList.remove("hide-top-bar");
-      }
-    });
-
-    const header = document.querySelector("header");
-    const topDetectionArea = document.querySelector(".top-detection-area");
-
-    function updateHeaderVisibility() {
-      if (window.scrollY === 0) {
-        header.classList.add("hide-top-bar");
-        header.classList.remove("show-top-bar");
-      } else {
-        header.classList.add("show-top-bar");
-        header.classList.remove("hide-top-bar");
-      }
-    }
-
-    window.addEventListener("scroll", updateHeaderVisibility);
-
-    topDetectionArea.addEventListener("mouseenter", () => {
-      header.classList.add("show-top-bar");
-      header.classList.remove("hide-top-bar");
-    });
-
-    topDetectionArea.addEventListener("mouseleave", () => {
-      if (window.scrollY === 0) {
-        header.classList.add("hide-top-bar");
-        header.classList.remove("show-top-bar");
-      }
-    });
-
-    // Initialize header visibility on page load
-    updateHeaderVisibility();
+    // Eliminar lógica de ocultar/mostrar header
+    window.removeEventListener("scroll", updateHeaderVisibility);
+    topDetectionArea.removeEventListener("mouseenter", () => {});
+    topDetectionArea.removeEventListener("mouseleave", () => {});
   </script>
 </body>
 </html>
