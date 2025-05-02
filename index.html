@@ -50,6 +50,7 @@
       cursor: pointer;
       border: none;
       background: none;
+      color: var(--black); /* Cambiado a negro */
     }
 
     .title {
@@ -66,32 +67,33 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
+      width: 80vw; /* Máximo 80% del ancho */
       height: 100vh;
-      background-color: rgba(0, 0, 0, 0.7);
+      background-color: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(4px);
       z-index: 999;
+      transition: transform 0.3s ease-in-out;
+      transform: translateX(-100%);
+    }
+
+    .nav-menu.show {
+      transform: translateX(0);
     }
 
     .nav-menu-content {
-      background-color: var(--white);
-      width: 250px;
-      height: 100%;
       padding: 2rem;
       display: flex;
       flex-direction: column;
-      position: absolute;
-      left: 0;
-      top: 0;
-      box-shadow: 4px 0 12px rgba(0, 0, 0, 0.2);
+      gap: 1.5rem;
     }
 
     .nav-menu-content a {
-      margin-bottom: 1.5rem;
       font-weight: bold;
       text-decoration: none;
-      color: var(--black);
-      font-size: 1.1rem;
+      color: var (--black);
+      font-size: 1.2rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #eee; /* Líneas sutiles entre opciones */
     }
 
     .nav-menu-close {
@@ -147,6 +149,7 @@
     .slides {
       display: flex;
       transition: transform 0.5s ease-in-out;
+      touch-action: pan-y; /* Habilitar swipe */
     }
 
     .slides img {
@@ -274,6 +277,7 @@
 
       .nav-menu-content {
         width: 100%;
+        gap: 2rem; /* Espaciado generoso */
       }
 
       .slider, .slides img {
@@ -291,7 +295,7 @@
     }
   </style>
 </head>
-<body>
+<body onload="window.scrollTo(0, 0)"> <!-- Evitar anclajes automáticos -->
   <header>
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     <div class="title">GÉNESIS</div>
@@ -309,11 +313,12 @@
 
   <section class="section about" id="sobre-nosotros">
     <h2>Sobre Nosotros</h2>
-    <p>Una pieza que representa el origen, el misterio y lo divino. Inspirado en la creación, en símbolos sagrados y figuras angelicales, este diseño une lo místico con lo moderno. GÉNESIS no es solo ropa: es el primer aliento de una nueva visión. Hecho en algodón 100% de alta calidad, oversize, 240g. Disponible en negro y crema, tallas M y L.</p>
+    <p>GÉNESIS nace como una manifestación artística de lo sagrado y lo moderno. Buscamos crear piezas únicas que inspiren transformación y conciencia, con símbolos que evocan lo divino en cada prenda.</p>
   </section>
 
   <section class="section product" id="producto">
     <h2>El comienzo de todo</h2> <!-- Updated title -->
+    <p>Una pieza que representa el origen, el misterio y lo divino. Inspirado en la creación, en símbolos sagrados y figuras angelicales, este diseño une lo místico con lo moderno. GÉNESIS no es solo ropa: es el primer aliento de una nueva visión. Hecho en algodón 100% de alta calidad, oversize, 240g. Disponible en negro y crema, tallas M y L.</p>
     <div class="slider">
       <button class="slider-btn prev" onclick="moveSlide(-1)">&#10094;</button> <!-- Ensure left arrow works -->
       <div class="slides" id="slideContainer">
@@ -373,7 +378,7 @@
 
     function toggleMenu() {
       const navMenu = document.getElementById("navMenu");
-      navMenu.style.display = navMenu.style.display === "flex" ? "none" : "flex";
+      navMenu.classList.toggle("show");
     }
 
     function selectOption(groupId, value) {
@@ -443,6 +448,24 @@
     prevButton.style.display = "block"; // Ensure it remains visible
     prevButton.style.visibility = "visible"; // Ensure visibility
     prevButton.style.opacity = "1"; // Ensure opacity is not set to 0
+
+    // Swipe functionality for slider
+    let startX = 0;
+    slides.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX;
+    });
+
+    slides.addEventListener("touchmove", (e) => {
+      if (!startX) return;
+      const diffX = e.touches[0].clientX - startX;
+      if (diffX > 50) {
+        moveSlide(-1);
+        startX = 0;
+      } else if (diffX < -50) {
+        moveSlide(1);
+        startX = 0;
+      }
+    });
   </script>
 </body>
 </html>
