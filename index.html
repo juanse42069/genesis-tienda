@@ -6,26 +6,66 @@
   <title>GÉNESIS - Tienda Oficial</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'UnifrakturCook', cursive;
+      font-family: 'IM Fell English SC', serif;
       background-color: #111;
       color: #f9f9f9;
     }
     header {
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       padding: 1.5rem;
       background-color: #000;
     }
     header img {
-      height: 60px;
+      height: 100px; /* Increased size */
+    }
+    .categories {
+      position: relative;
+    }
+    .categories button {
+      background-color: #222;
+      color: #f9f9f9;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .categories-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #333;
+      padding: 0.5rem 0;
+      list-style: none;
+      margin: 0;
+      border: 1px solid #444;
+    }
+    .categories-menu li {
+      padding: 0.5rem 1rem;
+    }
+    .categories-menu li a {
+      color: #f9f9f9;
+      text-decoration: none;
+    }
+    .categories:hover .categories-menu {
+      display: block;
     }
     h1 {
-      font-size: 4rem; /* Increased size */
+      font-size: 3rem;
       margin: 0.5rem 0;
-      color: gold; /* Changed color to gold */
+      color: gold;
+    }
+    .hero {
+      background-image: url('img/hero-background.jpg'); /* Add background image */
+      background-size: cover;
+      background-position: center;
+      height: 300px;
     }
     .product {
       display: flex;
@@ -45,11 +85,24 @@
       border-radius: 8px;
     }
     .info {
-      max-width: 600px;
+      max-width: 700px;
       margin-top: 2rem;
+      padding: 1.5rem;
+      background-color: #222;
+      border-radius: 8px;
       font-family: 'Georgia', serif;
-      line-height: 1.6;
+      line-height: 1.8;
       font-size: 1rem;
+      text-align: justify;
+    }
+    .info h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    .info .price {
+      font-size: 1.5rem;
+      margin: 1rem 0;
+      color: gold;
     }
     footer {
       background-color: #000;
@@ -57,17 +110,21 @@
       padding: 1rem;
       font-size: 0.9rem;
     }
-    .price {
-      font-size: 1.5rem;
-      margin: 1rem 0;
-    }
   </style>
 </head>
 <body>
   <header>
     <img src="img/logo.png" alt="Logo GÉNESIS" />
-    <h1>GÉNESIS</h1>
+    <div class="categories">
+      <button>Categorías</button>
+      <ul class="categories-menu">
+        <li><a href="#about">Sobre nosotros</a></li>
+        <li><a href="#products">Productos</a></li>
+      </ul>
+    </div>
   </header>
+
+  <div class="hero"></div> <!-- Hero section -->
 
   <section class="product">
     <div class="gallery">
