@@ -132,45 +132,6 @@ a, button, img {
   text-shadow: 1px 1px 4px #00000066;
 }
 
-.hero-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: var(--black); /* fondo oscuro */
-  animation: fadeIn 2s ease-in-out forwards;
-}
-
-.hero-image {
-  opacity: 0;
-  max-width: 80%;
-  border: 8px solid white; /* "marco blanco" */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  animation: imageFade 2.5s ease-in-out forwards 1s;
-  border-radius: 8px;
-}
-
-/* Animaciones */
-@keyframes fadeIn {
-  from {
-    background-color: black;
-  }
-  to {
-    background-color: white;
-  }
-}
-
-@keyframes imageFade {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
 .section {
   padding: 4rem 2rem;
   max-width: 1000px;
@@ -280,4 +241,57 @@ footer {
   height: 20px;
   border-radius: 50%;
   margin: 0.5rem auto 0;
+}
+
+/* Add new rules */
+.hero-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--white); /* fondo normal del sitio */
+}
+
+.hero-image {
+  opacity: 0;
+  max-width: 85%; /* marco de aire a los lados */
+  margin: 0 auto;
+  animation: imageFade 1.6s ease-in-out forwards; /* entrada suave */
+  border-radius: 4px;
+}
+
+/* Nueva animación */
+@keyframes imageFade {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Optional button styles */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-button {
+  margin-top: 2rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  padding: 0.75rem 2rem;
+  border: 1px solid var(--black);
+  background: transparent;
+  color: var(--black);
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color: var(--black);
+  color: var(--white);
 }
