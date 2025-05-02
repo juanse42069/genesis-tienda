@@ -34,12 +34,26 @@ header {
   border-bottom: 1px solid #eee;
 }
 
+.main-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  padding: 1.5rem 2rem;
+  background-color: var(--white);
+  border-bottom: 1px solid #eee;
+  z-index: 1000;
+}
+
 .menu-toggle {
   font-size: 1.8rem;
   cursor: pointer;
   border: none;
   background: none;
   color: var(--black);
+  position: absolute;
+  left: 1.5rem;
 }
 
 .title {
@@ -47,6 +61,17 @@ header {
   font-size: 2.5rem;
   color: var(--gold);
   text-decoration: none;
+}
+
+.center-title {
+  font-family: 'Old Standard TT', serif;
+  font-size: 2.5rem;
+  color: var(--gold);
+  text-decoration: none;
+}
+
+a, button, img {
+  transition: all 0.3s ease;
 }
 
 .nav-menu {
@@ -58,7 +83,7 @@ header {
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(4px);
   z-index: 999;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   transform: translateX(-100%);
 }
 
@@ -111,6 +136,10 @@ header {
   padding: 4rem 2rem;
   max-width: 1000px;
   margin: 0 auto;
+}
+
+section {
+  padding: 4rem 2rem;
 }
 
 .about h2, .contact h2 {
@@ -174,19 +203,20 @@ footer {
 
 .catalog {
   padding: 2rem;
+  gap: 2.5rem;
 }
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
   justify-items: center;
 }
 
 .product-card {
   border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 1rem;
+  padding: 2rem;
   text-align: center;
   max-width: 250px;
 }
@@ -199,6 +229,11 @@ footer {
 
 .product-card:hover img {
   transform: scale(1.05);
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  opacity: 0.95;
 }
 
 .color-indicator {
