@@ -325,13 +325,12 @@
   </style>
 </head>
 <body>
-  <div class="top-detection-area"></div>
   <header>
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     <div class="title">GÉNESIS</div>
   </header>
 
-  <!-- Nueva sección de introducción -->
+  <!-- Sección de introducción -->
   <section id="inicio" class="section">
     <h1 style="font-family: 'Old Standard TT', serif; font-size: 2.5rem; color: var(--gold); text-align: center;">Bienvenido a GÉNESIS</h1>
     <p style="font-size: 1.2rem; line-height: 1.6; text-align: center; margin: 1.5rem 0;">
@@ -342,9 +341,38 @@
     </div>
   </section>
 
+  <!-- Nueva sección de catálogo -->
+  <section id="catalogo" class="section" style="display: none;">
+    <h2 style="font-family: 'Old Standard TT', serif; font-size: 2.2rem; color: var(--gold); text-align: center; margin-bottom: 2rem;">Catálogo de Productos</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+      <!-- Producto 1 -->
+      <div style="border: 1px solid #eee; border-radius: 8px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;">
+        <img src="img/frente-negra.jpg" alt="Camiseta Negra" style="width: 100%; height: auto;">
+        <div style="padding: 1rem; text-align: center;">
+          <h3 style="font-family: 'Old Standard TT', serif; font-size: 1.5rem; color: var(--black); margin-bottom: 0.5rem;">Camiseta Negra</h3>
+          <p style="font-size: 1.2rem; color: var(--gray); margin-bottom: 1rem;">$50,000</p>
+          <a href="#" style="background-color: var(--gold); color: var(--white); padding: 0.5rem 1rem; text-decoration: none; border-radius: 6px; font-weight: bold;">Detalles</a>
+        </div>
+      </div>
+      <!-- Producto 2 -->
+      <div style="border: 1px solid #eee; border-radius: 8px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;">
+        <img src="img/frente-crema.jpg" alt="Camiseta Crema" style="width: 100%; height: auto;">
+        <div style="padding: 1rem; text-align: center;">
+          <h3 style="font-family: 'Old Standard TT', serif; font-size: 1.5rem; color: var(--black); margin-bottom: 0.5rem;">Camiseta Crema</h3>
+          <p style="font-size: 1.2rem; color: var(--gray); margin-bottom: 1rem;">$50,000</p>
+          <a href="#" style="background-color: var(--gold); color: var(--white); padding: 0.5rem 1rem; text-decoration: none; border-radius: 6px; font-weight: bold;">Detalles</a>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 2rem;">
+      <button onclick="showInicio()" style="background-color: var(--gold); color: var(--white); padding: 1rem 2rem; border: none; border-radius: 6px; font-weight: bold;">Volver al inicio</button>
+    </div>
+  </section>
+
   <nav id="navMenu" class="nav-menu">
     <div class="nav-menu-content">
       <button class="nav-menu-close" onclick="toggleMenu()">✕</button>
+      <a href="#" onclick="showCatalogo()">Productos</a>
       <a href="#sobre-nosotros" onclick="toggleMenu()">Sobre Nosotros</a>
       <a href="#productos" onclick="toggleMenu()">Productos</a>
     </div>
@@ -501,6 +529,21 @@
         }
       });
     })();
+
+    function showCatalogo() {
+      document.getElementById('inicio').style.display = 'none';
+      document.getElementById('catalogo').style.display = 'block';
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For other browsers
+      toggleMenu(); // Close menu if open
+    }
+
+    function showInicio() {
+      document.getElementById('catalogo').style.display = 'none';
+      document.getElementById('inicio').style.display = 'block';
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For other browsers
+    }
   </script>
 </body>
 </html>
