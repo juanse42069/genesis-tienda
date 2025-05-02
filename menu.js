@@ -10,4 +10,17 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll("#navMenu a").forEach(link => {
     link.addEventListener("click", toggleMenu);
   });
+
+  document.querySelectorAll('.product-image').forEach(image => {
+    const hoverSrc = image.getAttribute('data-hover');
+    const originalSrc = image.src;
+
+    image.addEventListener('mouseenter', () => {
+      image.src = hoverSrc;
+    });
+
+    image.addEventListener('mouseleave', () => {
+      image.src = originalSrc;
+    });
+  });
 });

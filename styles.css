@@ -46,9 +46,7 @@ header {
   font-family: 'Old Standard TT', serif;
   font-size: 2.5rem;
   color: var(--gold);
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  text-decoration: none;
 }
 
 .nav-menu {
@@ -99,6 +97,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1.5px solid #e0e0e0;
 }
 
 .hero h1 {
@@ -154,6 +153,10 @@ footer {
   .about p, .contact p {
     font-size: 16px;
   }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .hidden {
@@ -175,8 +178,9 @@ footer {
 
 .product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
+  justify-items: center;
 }
 
 .product-card {
@@ -184,9 +188,22 @@ footer {
   border-radius: 8px;
   padding: 1rem;
   text-align: center;
+  max-width: 250px;
 }
 
 .product-card img {
   max-width: 100%;
   border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
+.color-indicator {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 0.5rem auto 0;
 }

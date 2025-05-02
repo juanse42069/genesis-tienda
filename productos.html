@@ -8,23 +8,28 @@
 </head>
 <body>
   <header>
-    <a href="index.html" class="back-button">← Volver al inicio</a>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     <a href="index.html" class="title">GÉNESIS</a>
   </header>
+
+  <nav id="navMenu" class="nav-menu">
+    <!-- ...existing code from index.html... -->
+  </nav>
+
   <section class="catalog">
     <h2>Catálogo de Productos</h2>
     <div class="product-grid">
       <div class="product-card">
-        <img src="img/frente-negra.jpg" alt="Camiseta Negra">
+        <img src="img/frente-negra.jpg" alt="Camiseta Negra" class="product-image" data-hover="img/espalda-negra.jpg">
         <h3>Camiseta Negra</h3>
-        <p>$50,000</p>
-        <button>Detalles</button>
+        <p>$90,000 COP</p>
+        <div class="color-indicator" style="background-color: black;"></div>
       </div>
       <div class="product-card">
-        <img src="img/frente-crema.jpg" alt="Camiseta Crema">
+        <img src="img/frente-crema.jpg" alt="Camiseta Crema" class="product-image" data-hover="img/espalda-crema.jpg">
         <h3>Camiseta Crema</h3>
-        <p>$50,000</p>
-        <button>Detalles</button>
+        <p>$90,000 COP</p>
+        <div class="color-indicator" style="background-color: #f5f5dc;"></div>
       </div>
     </div>
   </section>
