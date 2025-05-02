@@ -378,6 +378,8 @@
 
     function toggleMenu() {
       const navMenu = document.getElementById("navMenu");
+      const isMenuVisible = navMenu.classList.contains("show");
+      navMenu.style.display = isMenuVisible ? "none" : "flex"; // Mostrar u ocultar el menú
       navMenu.classList.toggle("show");
     }
 
@@ -451,20 +453,27 @@
 
     // Swipe functionality for slider
     let startX = 0;
+    let isSwiping = false;
+
     slides.addEventListener("touchstart", (e) => {
       startX = e.touches[0].clientX;
+      isSwiping = true;
     });
 
     slides.addEventListener("touchmove", (e) => {
-      if (!startX) return;
+      if (!isSwiping) return;
       const diffX = e.touches[0].clientX - startX;
       if (diffX > 50) {
         moveSlide(-1);
-        startX = 0;
+        isSwiping = false; // Evitar múltiples deslizamientos en un solo movimiento
       } else if (diffX < -50) {
         moveSlide(1);
-        startX = 0;
+        isSwiping = false;
       }
+    });
+
+    slides.addEventListener("touchend", () => {
+      isSwiping = false; // Reiniciar el estado de deslizamiento al finalizar el toque
     });
   </script>
 </body>
