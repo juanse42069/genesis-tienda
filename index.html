@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --gold: #d4af37;
@@ -51,7 +52,7 @@
     }
 
     .title {
-      font-family: 'UnifrakturCook', cursive;
+      font-family: 'Old Standard TT', serif;
       font-size: 2.5rem;
       color: var(--gold);
       position: absolute;
@@ -122,8 +123,8 @@
       margin: 0 auto;
     }
 
-    .about h2, .product h2, .contact h2 {
-      font-family: 'UnifrakturCook', cursive;
+    .about h2, .product h2, .contact h2, .selector label {
+      font-family: 'Old Standard TT', serif;
       font-size: 2.2rem;
       color: var(--gold);
       margin-bottom: 1rem;
@@ -171,6 +172,8 @@
       display: block;
       margin-top: 1rem;
       font-weight: bold;
+      font-size: 1.5rem;
+      color: var(--gold);
     }
 
     .selector .options {
@@ -202,6 +205,32 @@
 
     .circle-option span {
       color: var(--gold);
+      font-weight: bold;
+    }
+
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .quantity-btn {
+      background-color: var(--gold);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      padding: 0.5rem 1rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: box-shadow 0.3s;
+    }
+
+    .quantity-btn:hover {
+      box-shadow: 0 0 8px var(--gold);
+    }
+
+    .quantity-display {
+      font-size: 1.2rem;
       font-weight: bold;
     }
 
@@ -273,7 +302,11 @@
       </div>
 
       <label for="cantidad">Cantidad</label>
-      <input type="number" id="cantidad" value="1" min="1" max="5" />
+      <div class="quantity-selector">
+        <button class="quantity-btn" id="decreaseQuantity">-</button>
+        <span class="quantity-display" id="quantityDisplay">1</span>
+        <button class="quantity-btn" id="increaseQuantity">+</button>
+      </div>
 
       <a id="whatsappLink" class="whatsapp-button" href="#" target="_blank">Hacer pedido</a>
     </div>
@@ -316,6 +349,12 @@
     document.querySelectorAll('#colorOptions .circle-option').forEach(option => {
       option.addEventListener('click', () => {
         selectOption('colorOptions', option.dataset.value);
+        if (option.dataset.value === "Negro") {
+          currentSlide = 1; // Espalda negra
+        } else if (option.dataset.value === "Crema") {
+          currentSlide = 3; // Espalda crema
+        }
+        slides.style.transform = `translateX(-${currentSlide * 100}%)`;
       });
     });
 
@@ -325,11 +364,29 @@
       });
     });
 
+    const quantityDisplay = document.getElementById("quantityDisplay");
+    const decreaseQuantity = document.getElementById("decreaseQuantity");
+    const increaseQuantity = document.getElementById("increaseQuantity");
+
+    decreaseQuantity.addEventListener("click", () => {
+      const currentValue = parseInt(quantityDisplay.textContent, 10);
+      if (currentValue > 1) {
+        quantityDisplay.textContent = currentValue - 1;
+      }
+    });
+
+    increaseQuantity.addEventListener("click", () => {
+      const currentValue = parseInt(quantityDisplay.textContent, 10);
+      if (currentValue < 5) {
+        quantityDisplay.textContent = currentValue + 1;
+      }
+    });
+
     document.getElementById("whatsappLink").addEventListener("click", function(e) {
       e.preventDefault();
       const color = document.querySelector('#colorOptions .selected')?.dataset.value || "";
       const talla = document.querySelector('#tallaOptions .selected')?.dataset.value || "";
-      const cantidad = document.getElementById("cantidad").value;
+      const cantidad = quantityDisplay.textContent;
       const mensaje = `Hola, quiero comprar la camiseta GÉNESIS.\nColor: ${color}\nTalla: ${talla}\nCantidad: ${cantidad}`;
       const url = `https://wa.me/573176650424?text=${encodeURIComponent(mensaje)}`;
       window.open(url, '_blank');
