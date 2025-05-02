@@ -486,6 +486,10 @@
       document.addEventListener("DOMContentLoaded", () => {
         window.scrollTo(0, 0);
       });
+
+      document.querySelectorAll("#navMenu a").forEach(link => {
+        link.addEventListener("click", toggleMenu);
+      });
     })();
   </script>
 </body>
