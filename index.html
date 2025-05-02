@@ -412,8 +412,13 @@
       function toggleMenu() {
         const navMenu = document.getElementById("navMenu");
         navMenu.classList.toggle("show");
-        navMenu.style.display = navMenu.classList.contains("show") ? "flex" : "none";
       }
+
+      document.querySelector(".menu-toggle").addEventListener("click", toggleMenu);
+      document.querySelector(".nav-menu-close").addEventListener("click", toggleMenu);
+
+      document.querySelector(".prev").addEventListener("click", () => moveSlide(-1));
+      document.querySelector(".next").addEventListener("click", () => moveSlide(1));
 
       function selectOption(groupId, value) {
         document.querySelectorAll(`#${groupId} .circle-option`).forEach(opt => {
