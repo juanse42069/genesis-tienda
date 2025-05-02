@@ -132,6 +132,45 @@ a, button, img {
   text-shadow: 1px 1px 4px #00000066;
 }
 
+.hero-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--black); /* fondo oscuro */
+  animation: fadeIn 2s ease-in-out forwards;
+}
+
+.hero-image {
+  opacity: 0;
+  max-width: 80%;
+  border: 8px solid white; /* "marco blanco" */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  animation: imageFade 2.5s ease-in-out forwards 1s;
+  border-radius: 8px;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    background-color: black;
+  }
+  to {
+    background-color: white;
+  }
+}
+
+@keyframes imageFade {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .section {
   padding: 4rem 2rem;
   max-width: 1000px;
