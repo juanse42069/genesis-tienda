@@ -276,9 +276,9 @@
   </section>
 
   <section class="section product" id="producto">
-    <h2>Producto</h2>
+    <h2>El comienzo de todo</h2> <!-- Updated title -->
     <div class="slider">
-      <button class="slider-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+      <button class="slider-btn prev" onclick="moveSlide(-1)">&#10094;</button> <!-- Ensure left arrow works -->
       <div class="slides" id="slideContainer">
         <img src="img/frente-negra.jpg" alt="Frente negra">
         <img src="img/espalda-negra.jpg" alt="Espalda negra">
@@ -296,6 +296,8 @@
       </div>
 
       <label for="talla">Talla</label>
+      <a href="#" id="sizeGuideLink" style="display: block; margin-bottom: 1rem; color: var(--gold); font-size: 1rem;">Guía de tallas</a> <!-- Added size guide link -->
+      <img id="sizeGuideImage" src="img/guia-tallas.jpg" alt="Guía de tallas" style="display: none; max-width: 400px; margin: 1rem auto; display: block;" />
       <div class="options" id="tallaOptions">
         <div class="circle-option" data-value="M"><span>M</span></div>
         <div class="circle-option" data-value="L"><span>L</span></div>
@@ -390,6 +392,13 @@
       const mensaje = `Hola, quiero comprar la camiseta GÉNESIS.\nColor: ${color}\nTalla: ${talla}\nCantidad: ${cantidad}`;
       const url = `https://wa.me/573176650424?text=${encodeURIComponent(mensaje)}`;
       window.open(url, '_blank');
+    });
+
+    // Toggle size guide visibility
+    document.getElementById("sizeGuideLink").addEventListener("click", function(e) {
+      e.preventDefault();
+      const sizeGuideImage = document.getElementById("sizeGuideImage");
+      sizeGuideImage.style.display = sizeGuideImage.style.display === "block" ? "none" : "block";
     });
   </script>
 </body>
