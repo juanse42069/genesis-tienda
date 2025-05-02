@@ -1,50 +1,106 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Camisa Negra - GÉNESIS</title>
-  <link rel="stylesheet" href="styles.css"/>
-  <script defer src="script.js"></script>
+  <meta charset="UTF-8">
+  <title>Camisa Negra GÉNESIS</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0f0f0f;
+      color: #fff;
+      font-family: sans-serif;
+      text-align: center;
+    }
+
+    header {
+      background-color: white;
+      padding: 25px 0;
+      border-bottom: 2px solid #d4af37;
+    }
+
+    header h1 {
+      font-family: 'UnifrakturCook', cursive;
+      color: #d4af37;
+    }
+
+    .producto-detalle img {
+      width: 300px;
+      border: 2px solid #d4af37;
+      margin-bottom: 15px;
+    }
+
+    .boton-dorado {
+      background-color: #d4af37;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .guia-tallas-img {
+      display: none;
+      margin: 20px auto;
+    }
+
+    .selector {
+      margin: 10px;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Barra superior -->
-  <header class="barra-superior">
-    <nav>
-      <ul>
-        <li><a href="index.html">INICIO</a></li>
-        <li><a href="productos.html">PRODUCTOS</a></li>
-        <li><a href="https://www.instagram.com/genesis.1.00/" target="_blank">INSTAGRAM</a></li>
-      </ul>
-    </nav>
-  </header>
+<header>
+  <h1>GÉNESIS</h1>
+</header>
 
-  <!-- Detalle del producto -->
-  <main class="detalle-camisa">
-    <div class="slider">
-      <img id="slider-img" src="img/negra-frente.png" alt="Camisa Frente"/>
-      <button onclick="cambiarImagen('negra')">Cambiar Vista</button>
-    </div>
+<main class="producto-detalle">
+  <h2>Camisa Negra GÉNESIS</h2>
+  <p>$90.000 COP</p>
 
-    <div class="info-camisa">
-      <h1>Camisa Negra GÉNESIS</h1>
-      <p>$90.000 COP</p>
-      <label for="talla">Talla:</label>
-      <select id="talla">
-        <option>M</option>
-        <option>L</option>
-      </select>
+  <img id="vista-camisa" src="img/negra-frente.png" alt="Vista Frente">
+  <br>
+  <button class="boton-dorado" onclick="cambiarVista()">Cambiar Vista</button>
 
-      <label for="cantidad">Cantidad:</label>
-      <input type="number" id="cantidad" min="1" value="1"/>
+  <div class="selector">
+    <label for="talla">Talla:</label>
+    <select id="talla">
+      <option value="M">M</option>
+      <option value="L">L</option>
+    </select>
 
-      <button onclick="enviarWhatsApp('Camisa Negra')">Comprar por WhatsApp</button>
+    <label for="cantidad">Cantidad:</label>
+    <input type="number" id="cantidad" value="1" min="1">
+  </div>
 
-      <button onclick="mostrarGuiaTallas()">Ver Guía de Tallas</button>
-      <img id="guia-tallas" src="img/guia-tallas.png" style="display:none; width: 100%; margin-top: 10px;"/>
-    </div>
-  </main>
+  <button class="boton-dorado" onclick="enviarWhatsapp()">Comprar por WhatsApp</button>
+  <button class="boton-dorado" onclick="toggleGuia()">Ver Guía de Tallas</button>
+
+  <img id="guia-img" class="guia-tallas-img" src="img/guia-tallas.png" alt="Guía de Tallas">
+</main>
+
+<script>
+  let vistaFrente = true;
+  function cambiarVista() {
+    const img = document.getElementById("vista-camisa");
+    img.src = vistaFrente ? "img/negra-espalda.png" : "img/negra-frente.png";
+    vistaFrente = !vistaFrente;
+  }
+
+  function enviarWhatsapp() {
+    const talla = document.getElementById("talla").value;
+    const cantidad = document.getElementById("cantidad").value;
+    const mensaje = `Hola, quiero pedir ${cantidad} camisa(s) talla ${talla} modelo Negra GÉNESIS.`;
+    window.open(`https://wa.me/573176650424?text=${encodeURIComponent(mensaje)}`, "_blank");
+  }
+
+  function toggleGuia() {
+    const guia = document.getElementById("guia-img");
+    guia.style.display = guia.style.display === "none" ? "block" : "none";
+  }
+</script>
 
 </body>
 </html>

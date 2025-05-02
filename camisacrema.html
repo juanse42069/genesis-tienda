@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Camisa Crema - GÉNESIS</title>
   <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+  <style>
+    /* ...same styles as camisanegra.html... */
+  </style>
   <script defer src="script.js"></script>
 </head>
 <body>
@@ -45,6 +49,27 @@
       <img id="guia-tallas" src="img/guia-tallas.png" style="display:none; width: 100%; margin-top: 10px;"/>
     </div>
   </main>
+
+  <script>
+    let vistaFrente = true;
+    function cambiarVista() {
+      const img = document.getElementById("slider-img");
+      img.src = vistaFrente ? "img/crema-espalda.png" : "img/crema-frente.png";
+      vistaFrente = !vistaFrente;
+    }
+
+    function enviarWhatsapp() {
+      const talla = document.getElementById("talla").value;
+      const cantidad = document.getElementById("cantidad").value;
+      const mensaje = `Hola, quiero pedir ${cantidad} camisa(s) talla ${talla} modelo Crema GÉNESIS.`;
+      window.open(`https://wa.me/573176650424?text=${encodeURIComponent(mensaje)}`, "_blank");
+    }
+
+    function toggleGuia() {
+      const guia = document.getElementById("guia-tallas");
+      guia.style.display = guia.style.display === "none" ? "block" : "none";
+    }
+  </script>
 
 </body>
 </html>

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GÉNESIS - Productos</title>
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
   <style>
     /* Grid layout for products */
     .product-grid {
@@ -83,29 +84,51 @@
         text-decoration: none;
         color: #000;
     }
+
+    .producto-grid {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 40px;
+    }
+
+    .producto-boton {
+      text-align: center;
+      text-decoration: none;
+      color: #d4af37;
+      font-family: 'UnifrakturCook', cursive;
+      transition: transform 0.3s ease;
+    }
+
+    .producto-boton:hover {
+      transform: scale(1.05);
+    }
+
+    .producto-boton img {
+      width: 250px;
+      border: 2px solid #d4af37;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-    <a href="index.html" class="title">GÉNESIS</a>
-  </header>
-  <main>
-    <section class="product-grid">
-      <div class="cuadricula-producto">
-        <a href="camisanegra.html" class="boton-producto">
-          <img src="img/negra-frente.png" alt="Camisa Negra">
-          <p>Camisa GÉNESIS Negra</p>
-        </a>
-      </div>
-      <div class="cuadricula-producto">
-        <a href="camisacrema.html" class="boton-producto">
-          <img src="img/crema-frente.png" alt="Camisa Crema">
-          <p>Camisa GÉNESIS Crema</p>
-        </a>
-      </div>
-    </section>
-  </main>
+<header style="background-color: white; padding: 25px 0; border-bottom: 2px solid #d4af37;">
+  <div style="text-align: center;">
+    <h1 style="font-family: 'UnifrakturCook', cursive; font-size: 40px; color: #d4af37;">GÉNESIS</h1>
+  </div>
+</header>
+<main>
+  <div class="producto-grid">
+    <a href="camisanegra.html" class="producto-boton">
+      <img src="img/negra-frente.png" alt="Camisa Negra GÉNESIS">
+      <span>Camisa Negra</span>
+    </a>
+    <a href="camisacrema.html" class="producto-boton">
+      <img src="img/crema-frente.png" alt="Camisa Crema GÉNESIS">
+      <span>Camisa Crema</span>
+    </a>
+  </div>
+</main>
   <footer>
     © 2025 GÉNESIS. Todos los derechos reservados.
   </footer>
