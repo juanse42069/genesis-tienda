@@ -6,7 +6,7 @@
   <title>GÉNESIS - Tienda Oficial</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --gold: #d4af37;
@@ -15,11 +15,14 @@
       --white: #ffffff;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      scroll-behavior: smooth;
     }
 
     body {
@@ -41,17 +44,19 @@
     }
 
     .menu-toggle {
-      font-size: 2rem;
+      font-size: 1.8rem;
       cursor: pointer;
       border: none;
       background: none;
     }
 
     .title {
-      font-family: 'EB Garamond', serif;
-      font-size: 4rem;
-      font-weight: 700;
+      font-family: 'UnifrakturCook', cursive;
+      font-size: 2.5rem;
       color: var(--gold);
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     .nav-menu {
@@ -62,7 +67,7 @@
       width: 100vw;
       height: 100vh;
       background-color: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(4px);
       z-index: 999;
     }
 
@@ -84,7 +89,7 @@
       font-weight: bold;
       text-decoration: none;
       color: var(--black);
-      font-size: 1.2rem;
+      font-size: 1.1rem;
     }
 
     .nav-menu-close {
@@ -97,23 +102,18 @@
     }
 
     .hero {
-      background: url('img/fondo-portada.jpg') no-repeat center center/cover;
-      height: 85vh;
+      background: url('img/fondo-logo.png') no-repeat center center/cover;
+      height: 700px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .hero h1 {
-      font-family: 'EB Garamond', serif;
+      font-family: 'UnifrakturCook', cursive;
       font-size: 5rem;
       color: var(--gold);
-      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
-      background: url('img/fondo-logo.png') center center/contain no-repeat;
-      background-size: 500px;
-      background-position: center;
-      background-repeat: no-repeat;
-      padding: 3rem;
+      text-shadow: 1px 1px 4px #00000066;
     }
 
     .section {
@@ -122,78 +122,87 @@
       margin: 0 auto;
     }
 
-    .about, .product, .contact {
-      margin-bottom: 4rem;
-    }
-
     .about h2, .product h2, .contact h2 {
-      font-family: 'EB Garamond', serif;
-      font-size: 2.4rem;
+      font-family: 'UnifrakturCook', cursive;
+      font-size: 2.2rem;
       color: var(--gold);
       margin-bottom: 1rem;
     }
 
     .about p {
-      font-size: 1.3rem;
-      line-height: 1.8;
+      font-size: 1.5rem;
+      line-height: 1.6;
     }
 
-    .product-images {
+    .slider {
+      position: relative;
+      width: 100%;
+      max-width: 700px;
+      margin: auto;
+      overflow: hidden;
+    }
+
+    .slides {
       display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 2rem;
+      transition: transform 0.5s ease-in-out;
     }
 
-    .product-images img {
-      width: 280px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    .slides img {
+      width: 100%;
+      flex-shrink: 0;
     }
 
-    .selector {
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 0 1rem;
+    }
+
+    .prev { left: 0; }
+    .next { right: 0; }
+
+    .selector label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    .selector .options {
       display: flex;
-      flex-direction: column;
-      align-items: start;
       gap: 1rem;
+      margin-bottom: 1rem;
     }
 
-    .option-buttons {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .option-buttons button {
-      width: 48px;
-      height: 48px;
+    .circle-option {
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       border: 2px solid #ccc;
-      background-color: #000;
-      cursor: pointer;
-    }
-
-    .quantity-select {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-    }
-
-    .quantity-select button {
-      width: 32px;
-      height: 32px;
-      font-size: 1.2rem;
-      background: none;
-      border: 1px solid #000;
+      justify-content: center;
       cursor: pointer;
+      transition: 0.3s;
     }
 
-    .quantity-select input {
-      width: 50px;
-      text-align: center;
-      border: 1px solid #000;
-      padding: 0.3rem;
+    .circle-option:hover {
+      box-shadow: 0 0 5px var(--gold);
+    }
+
+    .circle-option.selected {
+      border: 2px solid var(--gold);
+      box-shadow: 0 0 10px var(--gold);
+    }
+
+    .circle-option span {
+      color: var(--gold);
+      font-weight: bold;
     }
 
     .whatsapp-button {
@@ -230,9 +239,7 @@
     </div>
   </nav>
 
-  <section class="hero">
-    <h1>GÉNESIS</h1>
-  </section>
+  <section class="hero"></section>
 
   <section class="section about" id="sobre-nosotros">
     <h2>Sobre Nosotros</h2>
@@ -241,40 +248,34 @@
 
   <section class="section product" id="producto">
     <h2>Producto</h2>
-    <div class="product-images">
-      <img src="img/frente-negra.jpg" alt="Frente negra">
-      <img src="img/espalda-negra.jpg" alt="Espalda negra">
-      <img src="img/frente-crema.jpg" alt="Frente crema">
-      <img src="img/espalda-crema.jpg" alt="Espalda crema">
+    <div class="slider">
+      <button class="slider-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+      <div class="slides" id="slideContainer">
+        <img src="img/frente-negra.jpg" alt="Frente negra">
+        <img src="img/espalda-negra.jpg" alt="Espalda negra">
+        <img src="img/frente-crema.jpg" alt="Frente crema">
+        <img src="img/espalda-crema.jpg" alt="Espalda crema">
+      </div>
+      <button class="slider-btn next" onclick="moveSlide(1)">&#10095;</button>
     </div>
 
     <div class="selector">
-      <div>
-        <label>Color</label>
-        <div class="option-buttons">
-          <button style="background:#000" onclick="selectColor('Negro')"></button>
-          <button style="background:#f2e2c4" onclick="selectColor('Crema')"></button>
-        </div>
+      <label for="color">Color</label>
+      <div class="options" id="colorOptions">
+        <div class="circle-option" data-value="Negro" style="background:#000;"></div>
+        <div class="circle-option" data-value="Crema" style="background:#f5e7c4;"></div>
       </div>
 
-      <div>
-        <label>Talla</label>
-        <div class="option-buttons">
-          <button onclick="selectTalla('M')">M</button>
-          <button onclick="selectTalla('L')">L</button>
-        </div>
+      <label for="talla">Talla</label>
+      <div class="options" id="tallaOptions">
+        <div class="circle-option" data-value="M"><span>M</span></div>
+        <div class="circle-option" data-value="L"><span>L</span></div>
       </div>
 
-      <div>
-        <label>Cantidad</label>
-        <div class="quantity-select">
-          <button onclick="updateCantidad(-1)">−</button>
-          <input type="text" id="cantidad" value="1" readonly />
-          <button onclick="updateCantidad(1)">+</button>
-        </div>
-      </div>
+      <label for="cantidad">Cantidad</label>
+      <input type="number" id="cantidad" value="1" min="1" max="5" />
 
-      <a id="whatsappLink" class="whatsapp-button" href="#" target="_blank">Comprar por WhatsApp</a>
+      <a id="whatsappLink" class="whatsapp-button" href="#" target="_blank">Hacer pedido</a>
     </div>
   </section>
 
@@ -289,32 +290,46 @@
   </footer>
 
   <script>
-    const cantidadInput = document.getElementById("cantidad");
-    let color = "Negro";
-    let talla = "M";
+    let currentSlide = 0;
+    const slides = document.getElementById("slideContainer");
+    const totalSlides = slides.children.length;
+
+    function moveSlide(direction) {
+      currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+      slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
 
     function toggleMenu() {
       const navMenu = document.getElementById("navMenu");
       navMenu.style.display = navMenu.style.display === "flex" ? "none" : "flex";
     }
 
-    function selectColor(c) {
-      color = c;
+    function selectOption(groupId, value) {
+      document.querySelectorAll(`#${groupId} .circle-option`).forEach(opt => {
+        opt.classList.remove("selected");
+        if (opt.dataset.value === value) {
+          opt.classList.add("selected");
+        }
+      });
     }
 
-    function selectTalla(t) {
-      talla = t;
-    }
+    document.querySelectorAll('#colorOptions .circle-option').forEach(option => {
+      option.addEventListener('click', () => {
+        selectOption('colorOptions', option.dataset.value);
+      });
+    });
 
-    function updateCantidad(delta) {
-      let current = parseInt(cantidadInput.value);
-      current = Math.max(1, current + delta);
-      cantidadInput.value = current;
-    }
+    document.querySelectorAll('#tallaOptions .circle-option').forEach(option => {
+      option.addEventListener('click', () => {
+        selectOption('tallaOptions', option.dataset.value);
+      });
+    });
 
     document.getElementById("whatsappLink").addEventListener("click", function(e) {
       e.preventDefault();
-      const cantidad = cantidadInput.value;
+      const color = document.querySelector('#colorOptions .selected')?.dataset.value || "";
+      const talla = document.querySelector('#tallaOptions .selected')?.dataset.value || "";
+      const cantidad = document.getElementById("cantidad").value;
       const mensaje = `Hola, quiero comprar la camiseta GÉNESIS.\nColor: ${color}\nTalla: ${talla}\nCantidad: ${cantidad}`;
       const url = `https://wa.me/573176650424?text=${encodeURIComponent(mensaje)}`;
       window.open(url, '_blank');
