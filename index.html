@@ -43,6 +43,7 @@
       top: 0;
       z-index: 1000;
       border-bottom: 1px solid #eee;
+      transition: background-color 0.3s ease; /* Smooth transition for background */
     }
 
     .menu-toggle {
@@ -107,24 +108,21 @@
 
     .hero {
       background: url('img/fondo-logo.png') no-repeat center center/cover;
-      height: 700px;
+      height: 100vh; /* Ensure it spans the full viewport height */
+      margin: 0 1.5rem; /* Add horizontal margins */
       display: flex;
       align-items: center;
       justify-content: center;
-      opacity: 0;
-      animation: fadeInHero 1.5s ease-out forwards;
-      padding: 0 2rem; /* Add horizontal padding */
+      animation: fadeInHero 1.2s ease-in forwards; /* Updated animation */
     }
 
     @keyframes fadeInHero {
       from {
         opacity: 0;
-        transform: scale(1.03);
-        background-color: black;
+        background-color: black; /* Start with black background */
       }
       to {
         opacity: 1;
-        transform: scale(1);
       }
     }
 
@@ -494,7 +492,7 @@
 
     window.addEventListener("scroll", function () {
       const header = document.querySelector("header");
-      if (window.scrollY <= 10) {
+      if (window.scrollY === 0) {
         header.classList.add("hide-top-bar");
       } else {
         header.classList.remove("hide-top-bar");
