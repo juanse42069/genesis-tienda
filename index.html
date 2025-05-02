@@ -453,27 +453,25 @@
 
     // Swipe functionality for slider
     let startX = 0;
-    let isSwiping = false;
+    let endX = 0;
 
     slides.addEventListener("touchstart", (e) => {
       startX = e.touches[0].clientX;
-      isSwiping = true;
     });
 
     slides.addEventListener("touchmove", (e) => {
-      if (!isSwiping) return;
-      const diffX = e.touches[0].clientX - startX;
-      if (diffX > 50) {
-        moveSlide(-1);
-        isSwiping = false; // Evitar múltiples deslizamientos en un solo movimiento
-      } else if (diffX < -50) {
-        moveSlide(1);
-        isSwiping = false;
-      }
+      endX = e.touches[0].clientX;
     });
 
     slides.addEventListener("touchend", () => {
-      isSwiping = false; // Reiniciar el estado de deslizamiento al finalizar el toque
+      const diffX = endX - startX;
+      if (diffX > 50) {
+        moveSlide(-1); // Swipe right
+      } else if (diffX < -50) {
+        moveSlide(1); // Swipe left
+      }
+      startX = 0; // Reset values
+      endX = 0;
     });
   </script>
 </body>
