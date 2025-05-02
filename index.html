@@ -111,6 +111,27 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      opacity: 0;
+      animation: fadeInHero 1.5s ease-out forwards;
+      padding: 0 2rem; /* Add horizontal padding */
+    }
+
+    @keyframes fadeInHero {
+      from {
+        opacity: 0;
+        transform: scale(1.03);
+        background-color: black;
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .hide-top-bar {
+      background-color: transparent !important;
+      box-shadow: none !important;
+      border-bottom: none !important;
     }
 
     .hero h1 {
@@ -469,6 +490,15 @@
       }
 
       startX = 0; // Reset startX for the next gesture
+    });
+
+    window.addEventListener("scroll", function () {
+      const header = document.querySelector("header");
+      if (window.scrollY <= 10) {
+        header.classList.add("hide-top-bar");
+      } else {
+        header.classList.remove("hide-top-bar");
+      }
     });
   </script>
 </body>
