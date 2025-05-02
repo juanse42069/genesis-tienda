@@ -1,7 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.getElementById('menu-toggle');
-  const menu = document.getElementById('menu');
-  toggle.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
+  const toggleMenu = () => {
+    const navMenu = document.getElementById("navMenu");
+    navMenu.classList.toggle("show");
+  };
+
+  document.querySelector(".menu-toggle").addEventListener("click", toggleMenu);
+  document.querySelector(".nav-menu-close").addEventListener("click", toggleMenu);
+
+  document.querySelectorAll("#navMenu a").forEach(link => {
+    link.addEventListener("click", toggleMenu);
   });
 });
