@@ -5,130 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GÉNESIS - Productos</title>
   <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
-  <style>
-    /* Grid layout for products */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      justify-items: center;
-    }
-
-    .product-card {
-      text-align: center;
-      position: relative;
-    }
-
-    .product-card img {
-      width: 100%;
-      max-width: 200px;
-      transition: opacity 0.3s ease;
-    }
-
-    .product-card img.back {
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0;
-    }
-
-    .product-card:hover img.front {
-      opacity: 0;
-    }
-
-    .product-card:hover img.back {
-      opacity: 1;
-    }
-
-    .product-color {
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      margin: 8px auto;
-    }
-
-    @media (max-width: 768px) {
-      .product-card img {
-        position: static;
-        opacity: 1;
-      }
-
-      .product-card img.back {
-        display: none;
-      }
-    }
-
-    /* Style adjustments for the header */
-    header {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 10px 20px;
-        background-color: #fff;
-        border-bottom: 1px solid #e0e0e0;
-    }
-
-    .menu-toggle {
-        position: absolute;
-        left: 20px;
-        font-size: 1.5rem;
-        background: none;
-        border: none;
-        cursor: pointer;
-    }
-
-    .title {
-        font-family: 'UnifrakturCook', serif;
-        font-size: 1.8rem;
-        text-decoration: none;
-        color: #000;
-    }
-
-    .producto-grid {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      padding: 40px;
-    }
-
-    .producto-boton {
-      text-align: center;
-      text-decoration: none;
-      color: #d4af37;
-      font-family: 'UnifrakturCook', cursive;
-      transition: transform 0.3s ease;
-    }
-
-    .producto-boton:hover {
-      transform: scale(1.05);
-    }
-
-    .producto-boton img {
-      width: 250px;
-      border: 2px solid #d4af37;
-      border-radius: 8px;
-    }
-  </style>
 </head>
 <body>
-<header style="background-color: white; padding: 25px 0; border-bottom: 2px solid #d4af37;">
-  <div style="text-align: center;">
-    <h1 style="font-family: 'UnifrakturCook', cursive; font-size: 40px; color: #d4af37;">GÉNESIS</h1>
-  </div>
-</header>
-<main>
-  <div class="producto-grid">
-    <a href="camisanegra.html" class="producto-boton">
-      <img src="img/negra-frente.png" alt="Camisa Negra GÉNESIS">
-      <span>Camisa Negra</span>
-    </a>
-    <a href="camisacrema.html" class="producto-boton">
-      <img src="img/crema-frente.png" alt="Camisa Crema GÉNESIS">
-      <span>Camisa Crema</span>
-    </a>
-  </div>
-</main>
+  <header>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <a href="index.html" class="title">GÉNESIS</a>
+  </header>
+
+  <nav id="navMenu" class="nav-menu">
+    <!-- ...existing code from index.html... -->
+  </nav>
+
+  <section class="catalog">
+    <h2>Catálogo de Productos</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="img/frente-negra.jpg" alt="Camiseta Negra" class="product-image" data-hover="img/espalda-negra.jpg">
+        <h3>Camiseta Negra</h3>
+        <p>$90,000 COP</p>
+        <div class="color-indicator" style="background-color: black;"></div>
+      </div>
+      <div class="product-card">
+        <img src="img/frente-crema.jpg" alt="Camiseta Crema" class="product-image" data-hover="img/espalda-crema.jpg">
+        <h3>Camiseta Crema</h3>
+        <p>$90,000 COP</p>
+        <div class="color-indicator" style="background-color: #f5f5dc;"></div>
+      </div>
+    </div>
+  </section>
   <footer>
     © 2025 GÉNESIS. Todos los derechos reservados.
   </footer>
