@@ -331,11 +331,22 @@
     <div class="title">GÉNESIS</div>
   </header>
 
+  <!-- Nueva sección de introducción -->
+  <section id="inicio" class="section">
+    <h1 style="font-family: 'Old Standard TT', serif; font-size: 2.5rem; color: var(--gold); text-align: center;">Bienvenido a GÉNESIS</h1>
+    <p style="font-size: 1.2rem; line-height: 1.6; text-align: center; margin: 1.5rem 0;">
+      En GÉNESIS, combinamos lo sagrado y lo moderno para crear piezas únicas que inspiran transformación y conciencia. Cada diseño es un reflejo de lo divino, pensado para conectar contigo.
+    </p>
+    <div style="text-align: center;">
+      <a href="#productos" style="background-color: var(--gold); color: var(--white); padding: 1rem 2rem; text-decoration: none; border-radius: 6px; font-weight: bold;">Ver productos</a>
+    </div>
+  </section>
+
   <nav id="navMenu" class="nav-menu">
     <div class="nav-menu-content">
       <button class="nav-menu-close" onclick="toggleMenu()">✕</button>
       <a href="#sobre-nosotros" onclick="toggleMenu()">Sobre Nosotros</a>
-      <a href="#producto" onclick="toggleMenu()">Productos</a>
+      <a href="#productos" onclick="toggleMenu()">Productos</a>
     </div>
   </nav>
 
@@ -346,45 +357,37 @@
     <p>GÉNESIS nace como una manifestación artística de lo sagrado y lo moderno. Buscamos crear piezas únicas que inspiren transformación y conciencia, con símbolos que evocan lo divino en cada prenda.</p>
   </section>
 
-  <section class="section product" id="producto">
-    <h2>El comienzo de todo</h2> <!-- Updated title -->
-    <p>Una pieza que representa el origen, el misterio y lo divino. Inspirado en la creación, en símbolos sagrados y figuras angelicales, este diseño une lo místico con lo moderno. GÉNESIS no es solo ropa: es el primer aliento de una nueva visión. Hecho en algodón 100% de alta calidad, oversize, 240g. Disponible en negro y crema, tallas M y L.</p>
-    <div class="slider">
-      <button class="slider-btn prev" onclick="moveSlide(-1)">&#10094;</button> <!-- Ensure left arrow works -->
-      <div class="slides" id="slideContainer">
-        <img src="img/frente-negra.jpg" alt="Frente negra">
-        <img src="img/espalda-negra.jpg" alt="Espalda negra">
-        <img src="img/frente-crema.jpg" alt="Frente crema">
-        <img src="img/espalda-crema.jpg" alt="Espalda crema">
+  <!-- Nueva sección de productos -->
+  <section id="productos" class="section">
+    <h2 style="font-family: 'Old Standard TT', serif; font-size: 2.2rem; color: var(--gold); text-align: center; margin-bottom: 2rem;">Nuestros Productos</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+      <!-- Producto 1 -->
+      <div style="border: 1px solid #eee; border-radius: 8px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;">
+        <img src="img/frente-negra.jpg" alt="Camiseta Negra" style="width: 100%; height: auto;">
+        <div style="padding: 1rem; text-align: center;">
+          <h3 style="font-family: 'Old Standard TT', serif; font-size: 1.5rem; color: var(--black); margin-bottom: 0.5rem;">Camiseta Negra</h3>
+          <p style="font-size: 1.2rem; color: var(--gray); margin-bottom: 1rem;">$50,000</p>
+          <a href="#" style="background-color: var(--gold); color: var(--white); padding: 0.5rem 1rem; text-decoration: none; border-radius: 6px; font-weight: bold;">Detalles</a>
+        </div>
       </div>
-      <button class="slider-btn next" onclick="moveSlide(1)">&#10095;</button>
-    </div>
-
-    <div class="selector">
-      <label for="color">Color</label>
-      <div class="options" id="colorOptions">
-        <div class="circle-option" data-value="Negro" style="background:#000;"></div>
-        <div class="circle-option" data-value="Crema" style="background:#f5e7c4;"></div>
+      <!-- Producto 2 -->
+      <div style="border: 1px solid #eee; border-radius: 8px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s;">
+        <img src="img/frente-crema.jpg" alt="Camiseta Crema" style="width: 100%; height: auto;">
+        <div style="padding: 1rem; text-align: center;">
+          <h3 style="font-family: 'Old Standard TT', serif; font-size: 1.5rem; color: var(--black); margin-bottom: 0.5rem;">Camiseta Crema</h3>
+          <p style="font-size: 1.2rem; color: var(--gray); margin-bottom: 1rem;">$50,000</p>
+          <a href="#" style="background-color: var(--gold); color: var(--white); padding: 0.5rem 1rem; text-decoration: none; border-radius: 6px; font-weight: bold;">Detalles</a>
+        </div>
       </div>
-
-      <label for="talla">Talla</label>
-      <div class="options" id="tallaOptions">
-        <div class="circle-option" data-value="M"><span>M</span></div>
-        <div class="circle-option" data-value="L"><span>L</span></div>
-      </div>
-      <a href="#" id="sizeGuideLink" style="display: block; margin-top: 1rem; color: var(--gold); font-size: 1rem;">Guía de tallas</a> <!-- Moved below talla options -->
-      <img id="sizeGuideImage" src="img/guia-tallas.jpg" alt="Guía de tallas" style="display: none; max-width: 400px; margin: 1rem auto;" />
-
-      <label for="cantidad">Cantidad</label>
-      <div class="quantity-selector">
-        <button class="quantity-btn" id="decreaseQuantity">-</button>
-        <span class="quantity-display" id="quantityDisplay">1</span>
-        <button class="quantity-btn" id="increaseQuantity">+</button>
-      </div>
-
-      <a id="whatsappLink" class="whatsapp-button" href="#" target="_blank">Hacer pedido</a>
     </div>
   </section>
+
+  <!-- Sección de productos anterior comentada -->
+  <!--
+  <section class="section product" id="producto">
+    ...existing code...
+  </section>
+  -->
 
   <section class="section contact" id="contacto">
     <h2>Contacto</h2>
@@ -489,6 +492,13 @@
 
       document.querySelectorAll("#navMenu a").forEach(link => {
         link.addEventListener("click", toggleMenu);
+      });
+
+      // Actualización del enlace del menú para apuntar a #productos
+      document.querySelectorAll("#navMenu a").forEach(link => {
+        if (link.textContent.trim() === "Productos") {
+          link.setAttribute("href", "#productos");
+        }
       });
     })();
   </script>
