@@ -9,6 +9,42 @@
   <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Add border to hero image */
+    .hero-image {
+        border: 1.5px solid #e0e0e0; /* Subtle border */
+    }
+
+    /* Style adjustments for the header */
+    header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #fff;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .menu-toggle {
+        position: absolute;
+        left: 20px;
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .title {
+        font-family: 'UnifrakturCook', serif;
+        font-size: 1.8rem;
+        text-decoration: none;
+        color: #000;
+    }
+
+    .nav-menu {
+        /* ...existing styles... */
+    }
+  </style>
 </head>
 <body id="top">
   <header>
@@ -25,7 +61,7 @@
     </div>
   </nav>
 
-  <section class="hero" style="border: 1.5px solid #e0e0e0;"></section>
+  <section class="hero hero-image"></section>
 
   <section class="section about" id="sobre-nosotros">
     <h2>Sobre Nosotros</h2>

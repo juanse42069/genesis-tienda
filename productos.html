@@ -5,34 +5,109 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GÉNESIS - Productos</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Grid layout for products */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      justify-items: center;
+    }
+
+    .product-card {
+      text-align: center;
+      position: relative;
+    }
+
+    .product-card img {
+      width: 100%;
+      max-width: 200px;
+      transition: opacity 0.3s ease;
+    }
+
+    .product-card img.back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+
+    .product-card:hover img.front {
+      opacity: 0;
+    }
+
+    .product-card:hover img.back {
+      opacity: 1;
+    }
+
+    .product-color {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      margin: 8px auto;
+    }
+
+    @media (max-width: 768px) {
+      .product-card img {
+        position: static;
+        opacity: 1;
+      }
+
+      .product-card img.back {
+        display: none;
+      }
+    }
+
+    /* Style adjustments for the header */
+    header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #fff;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .menu-toggle {
+        position: absolute;
+        left: 20px;
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .title {
+        font-family: 'UnifrakturCook', serif;
+        font-size: 1.8rem;
+        text-decoration: none;
+        color: #000;
+    }
+  </style>
 </head>
 <body>
   <header>
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     <a href="index.html" class="title">GÉNESIS</a>
   </header>
-
-  <nav id="navMenu" class="nav-menu">
-    <!-- ...existing code from index.html... -->
-  </nav>
-
-  <section class="catalog">
-    <h2>Catálogo de Productos</h2>
-    <div class="product-grid">
+  <main>
+    <section class="product-grid">
       <div class="product-card">
-        <img src="img/frente-negra.jpg" alt="Camiseta Negra" class="product-image" data-hover="img/espalda-negra.jpg">
+        <img src="img/frente-negra.jpg" alt="Camiseta Negra" class="front">
+        <img src="img/espalda-negra.jpg" alt="Camiseta Negra Espalda" class="back">
         <h3>Camiseta Negra</h3>
-        <p>$90,000 COP</p>
-        <div class="color-indicator" style="background-color: black;"></div>
+        <p>$50,000</p>
+        <div class="product-color" style="background-color: #000;"></div>
       </div>
       <div class="product-card">
-        <img src="img/frente-crema.jpg" alt="Camiseta Crema" class="product-image" data-hover="img/espalda-crema.jpg">
+        <img src="img/frente-crema.jpg" alt="Camiseta Crema" class="front">
+        <img src="img/espalda-crema.jpg" alt="Camiseta Crema Espalda" class="back">
         <h3>Camiseta Crema</h3>
-        <p>$90,000 COP</p>
-        <div class="color-indicator" style="background-color: #f5f5dc;"></div>
+        <p>$50,000</p>
+        <div class="product-color" style="background-color: #f5f5dc;"></div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
   <footer>
     © 2025 GÉNESIS. Todos los derechos reservados.
   </footer>

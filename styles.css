@@ -49,6 +49,15 @@ header {
   text-decoration: none;
 }
 
+.header-title {
+  font-family: 'Gothic', serif;
+  font-size: 24px;
+  text-decoration: none;
+  border: none;
+  background: none;
+  color: #000;
+}
+
 .nav-menu {
   position: fixed;
   top: 0;
@@ -179,8 +188,7 @@ footer {
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  justify-items: center;
+  gap: 16px;
 }
 
 .product-card {
@@ -206,4 +214,9 @@ footer {
   height: 20px;
   border-radius: 50%;
   margin: 0.5rem auto 0;
+}
+
+button, h3, p {
+  font-size: 1rem;
+  text-align: center;
 }
