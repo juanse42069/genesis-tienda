@@ -672,22 +672,23 @@ quantity-selector span {
 
 .footer-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Increase spacing between columns */
-  gap: 3rem; /* Increase gap between columns */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Flexible columns */
+  gap: 2rem; /* Adjust gap for better spacing */
   max-width: 1200px;
   margin: 0 auto;
-  text-align: left; /* Align text from left to right */
+  text-align: left; /* Maintain left-to-right alignment */
 }
 
 .footer-column {
-  min-width: 150px; /* Reduce minimum width */
+  min-width: 150px;
+  padding: 0 1rem; /* Add padding for better spacing */
 }
 
 .footer-title {
   font-family: 'Old Standard TT', serif;
-  font-size: 0.9rem; /* Reduce font size */
+  font-size: 0.9rem;
   text-transform: uppercase;
-  margin-bottom: 0.5rem; /* Reduce margin */
+  margin-bottom: 0.8rem; /* Increase spacing below titles */
 }
 
 .footer-links,
@@ -699,13 +700,13 @@ quantity-selector span {
 
 .footer-links li,
 .footer-list li {
-  margin-bottom: 0.2rem; /* Reduce spacing between items */
+  margin-bottom: 0.5rem; /* Increase spacing between items */
 }
 
 .footer-links a {
   text-decoration: none;
   color: #222;
-  font-size: 0.8rem; /* Reduce font size */
+  font-size: 0.8rem;
   transition: opacity 0.3s ease, text-decoration 0.3s ease;
 }
 
@@ -715,59 +716,44 @@ quantity-selector span {
 }
 
 .footer-list {
-  list-style: decimal inside; /* Add numbering for steps */
-  font-size: 0.8rem; /* Reduce font size */
+  list-style: decimal inside;
+  font-size: 0.8rem;
 }
 
 .footer-bottom {
-  position: relative; /* Ensure the social links are positioned relative to the footer */
-  text-align: center;
-  margin-top: 1rem;
+  position: relative;
+  text-align: center; /* Center-align for mobile */
+  margin-top: 1.5rem; /* Add spacing above the bottom section */
 }
 
 .footer-social {
   display: flex;
-  align-items: center; /* Align items vertically */
-  gap: 0.3rem; /* Reduce gap between social links */
+  justify-content: center; /* Center-align social links */
+  align-items: center;
+  gap: 0.8rem; /* Increase spacing between social links */
   margin-bottom: 1rem;
-  position: absolute; /* Position in the bottom-left corner */
-  bottom: 1rem;
-  left: 1rem;
-}
-
-.social-icon {
-  text-decoration: none;
-  color: #222;
-  font-size: 0.8rem; /* Reduce font size */
-  transition: opacity 0.3s ease;
-  display: flex;
-  align-items: center; /* Align text and separator vertically */
-}
-
-.social-icon:hover {
-  opacity: 0.7;
 }
 
 .footer-social .separator {
   width: 1px;
-  height: 0.8rem; /* Match the height of the text */
-  background-color: rgba(0, 0, 0, 0.2); /* Light gray and slightly transparent */
-  margin: 0 0.3rem; /* Reduce margin around separators */
+  height: 0.8rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  margin: 0 0.5rem; /* Adjust spacing around separators */
 }
 
 .footer-language {
-  font-size: 0.7rem; /* Reduce font size */
+  font-size: 0.7rem;
   margin-bottom: 0.5rem;
 }
 
 .footer-note {
-  font-size: 0.7rem; /* Reduce font size */
+  font-size: 0.7rem;
   margin-bottom: 0.5rem;
   color: #555;
 }
 
 .footer-copyright {
-  font-size: 0.6rem; /* Reduce font size */
+  font-size: 0.6rem;
   color: #777;
 }
 
@@ -775,10 +761,34 @@ quantity-selector span {
 @media (max-width: 768px) {
   .footer-container {
     grid-template-columns: 1fr; /* Stack columns vertically */
-    text-align: center;
+    gap: 1.5rem; /* Adjust gap for mobile */
+    text-align: left; /* Maintain left-to-right alignment */
+  }
+
+  .footer-column {
+    padding: 0; /* Remove extra padding for mobile */
   }
 
   .footer-social {
-    justify-content: center;
+    justify-content: center; /* Ensure social links are centered */
+    gap: 0.5rem; /* Adjust spacing for smaller screens */
   }
+
+  .footer-bottom {
+    margin-top: 1rem; /* Reduce spacing for mobile */
+  }
+}
+
+.footer-links a,
+.footer-note,
+.footer-language,
+.footer-social .social-icon {
+  text-decoration: none; /* Remove underline */
+  color: rgba(51, 51, 51, 0.7); /* Light gray with transparency */
+  transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-social .social-icon:hover {
+  opacity: 0.9; /* Slightly increase opacity on hover */
 }
