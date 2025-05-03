@@ -25,14 +25,12 @@
     </div>
   </nav>
 
-  <section class="hero-container">
-    <div class="hero-content">
-      <img src="img/fondo-logo.png" alt="Logo GÉNESIS" class="hero-image">
-      <a href="productos.html" class="hero-button">Ver colección</a>
-    </div>
+  <section class="hero-section">
+    <img src="img/fondo-logo.png" alt="Logo GÉNESIS" class="hero-image">
+    <a href="productos.html" class="hero-button">Ver colección</a>
   </section>
 
-  <section class="section about" id="sobre-nosotros">
+  <section class="sobre-nosotros" id="sobre-nosotros">
     <h2>Sobre Nosotros</h2>
     <p>GÉNESIS nace como una manifestación artística de lo sagrado y lo moderno. Buscamos crear piezas únicas que inspiren transformación y conciencia, con símbolos que evocan lo divino en cada prenda.</p>
   </section>
@@ -48,5 +46,27 @@
   </footer>
 
   <script src="menu.js"></script>
+  <script>
+    let lastScrollTop = 0;
+    const header = document.querySelector('.main-header');
+
+    window.addEventListener('scroll', function() {
+      const currentScroll = window.scrollY;
+      if (currentScroll === 0) {
+        header.classList.add('hide');
+        header.style.backgroundColor = 'transparent';
+      } else {
+        header.classList.remove('hide');
+        header.style.backgroundColor = 'white';
+      }
+      lastScrollTop = currentScroll;
+    });
+
+    // Ejecuta inmediatamente al cargar para ocultarla si estamos arriba
+    if (window.scrollY === 0) {
+      header.classList.add('hide');
+      header.style.backgroundColor = 'transparent';
+    }
+  </script>
 </body>
 </html>

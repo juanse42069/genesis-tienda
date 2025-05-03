@@ -297,3 +297,32 @@ footer {
   background-color: #b08d3e;
   color: #fff;
 }
+
+.hero-section {
+  padding: 4rem 0;
+  max-width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero-image {
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  padding: 2rem 0;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  transition: top 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.header.hide {
+  top: -100px;
+}
