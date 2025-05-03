@@ -147,13 +147,14 @@ a, button, img {
 
 .hero-button {
   position: absolute;
-  bottom: 20px;
+  bottom: 80px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: var(--gold);
+  background-color: rgba(212, 175, 55, 0.9); /* Slightly transparent gold */
   color: var(--white);
   font-family: 'Old Standard TT', serif;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
+  text-transform: uppercase;
   padding: 12px 24px;
   border: none;
   border-radius: 8px;
@@ -162,6 +163,7 @@ a, button, img {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-width: 250px;
 }
 
 .hero-button:hover {
