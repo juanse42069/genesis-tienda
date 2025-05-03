@@ -11,10 +11,20 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body id="top">
-  <header class="main-header">
-    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-    <a href="index.html" class="title center-title">GÉNESIS</a>
-  </header>
+  <!-- Hero con imagen de fondo a pantalla completa -->
+  <section class="hero-fullscreen">
+    <div class="navbar-content">
+      <img src="img/logo-genesis.png" alt="Logo Génesis" class="logo-navbar" />
+      <div class="menu-icons">
+        <!-- Aquí van tus íconos: menú hamburguesa, lupa, carrito, etc -->
+      </div>
+    </div>
+
+    <div class="hero-texto">
+      <h1>LA PORTA DEL CIELO</h1>
+      <p>FOR YOUR VACATIONAL SOUL</p>
+    </div>
+  </section>
 
   <nav id="navMenu" class="nav-menu">
     <div class="nav-menu-content">
@@ -24,11 +34,6 @@
       <a href="#contacto" onclick="toggleMenu()">Contacto</a>
     </div>
   </nav>
-
-  <section class="hero-section">
-    <img src="img/fondo-logo.png" alt="Logo GÉNESIS" class="hero-image">
-    <a href="productos.html" class="hero-button">Ver colección</a>
-  </section>
 
   <section class="sobre-nosotros" id="sobre-nosotros">
     <h2>Sobre Nosotros</h2>
@@ -67,6 +72,16 @@
       header.classList.add('hide');
       header.style.backgroundColor = 'transparent';
     }
+
+    const navbar = document.querySelector('.navbar-content');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
   </script>
 </body>
 </html>
