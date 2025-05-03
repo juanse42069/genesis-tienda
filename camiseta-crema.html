@@ -72,6 +72,7 @@
     let selectedSize = null;
     let quantity = 1;
     let currentSlide = 0;
+    const stock = { "crema-S": 3, "crema-M": 8, "crema-L": 2 }; // Example stock data
 
     function selectSize(size) {
       selectedSize = size;
@@ -79,6 +80,8 @@
       document.querySelectorAll('.size-option').forEach(option => {
         if (option.textContent === size) option.classList.add('selected');
       });
+      quantity = 1; // Reset quantity when size changes
+      document.getElementById('quantity').textContent = quantity;
     }
 
     document.querySelectorAll('.size-option').forEach(option => {
@@ -98,7 +101,12 @@
     }
 
     function changeQuantity(change) {
-      quantity = Math.max(1, Math.min(5, quantity + change));
+      if (!selectedSize) {
+        alert('Por favor selecciona una talla.');
+        return;
+      }
+      const maxQuantity = stock[`crema-${selectedSize}`] || 0; // Get stock for the selected size
+      quantity = Math.max(1, Math.min(maxQuantity, quantity + change));
       document.getElementById('quantity').textContent = quantity;
     }
 
