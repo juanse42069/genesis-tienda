@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const response = await fetch(inventoryUrl, { cache: "no-store" }); // Ensure fresh data is fetched
       const csvData = await response.text();
-      const rows = csvData.split("\n").slice(1); // Skip header row
+      const rows = csvData.split("\n").slice(1).filter(row => row.trim() !== ""); // Skip header row and filter empty rows
 
       const stock = {};
       rows.forEach(row => {
