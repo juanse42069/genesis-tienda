@@ -583,3 +583,16 @@ quantity-selector span {
     max-height: 95vh; /* Increase height for better visibility */
   }
 }
+
+.btn-stock.agotado {
+  background-color: #ccc; /* Gray background */
+  color: #666; /* Dark gray text */
+  cursor: not-allowed; /* Not-allowed cursor */
+  opacity: 0.6; /* Slightly faded */
+}
+
+.product-card.agotado {
+  filter: grayscale(100%); /* Grayscale effect */
+  opacity: 0.6; /* Slightly faded */
+  pointer-events: none; /* Disable interactions */
+}

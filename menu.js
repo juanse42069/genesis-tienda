@@ -84,4 +84,59 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  const inventoryUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ1GmPqpqeJwtefR3tM2hndAI5meeDVRjDljqanIFwGno_VogkYgi-6x1dAVErf_i7QjRP0IfB9c_fF/pub?gid=0&single=true&output=csv";
+
+  const updateStockStatus = async () => {
+    try {
+      const response = await fetch(inventoryUrl);
+      const csvData = await response.text();
+      const rows = csvData.split("\n").slice(1); // Skip header row
+
+      const stock = {};
+      rows.forEach(row => {
+        const [color, size, quantity] = row.split(",");
+        const key = `${color.toLowerCase()}-${size.toUpperCase()}`;
+        stock[key] = parseInt(quantity, 10);
+      });
+
+      // Update button stock status
+      document.querySelectorAll(".size-option").forEach(button => {
+        const key = button.dataset.key;
+        if (stock[key] === 0) {
+          button.classList.add("unavailable");
+          button.disabled = true;
+        } else {
+          button.classList.remove("unavailable");
+          button.disabled = false;
+        }
+      });
+
+      // Update product card stock status
+      document.querySelectorAll(".product-card").forEach(card => {
+        const color = card.dataset.color.toLowerCase();
+        const sizes = ["S", "M", "L"];
+        const isOutOfStock = sizes.every(size => stock[`${color}-${size}`] === 0);
+        if (isOutOfStock) {
+          card.classList.add("agotado");
+        } else {
+          card.classList.remove("agotado");
+        }
+      });
+    } catch (error) {
+      console.error("Error fetching inventory:", error);
+    }
+  };
+
+  updateStockStatus();
+
+  // Handle size selection
+  document.querySelectorAll(".size-option").forEach(button => {
+    button.addEventListener("click", () => {
+      if (!button.classList.contains("unavailable")) {
+        document.querySelectorAll(".size-option").forEach(option => option.classList.remove("selected"));
+        button.classList.add("selected");
+      }
+    });
+  });
 });
