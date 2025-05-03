@@ -22,27 +22,15 @@ body {
   overflow-x: hidden;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 2rem;
-  background-color: var(--white);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  border-bottom: 1px solid #eee;
-}
-
-.main-header {
+header, .main-header {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: sticky;
-  top: 0;
   padding: 1.5rem 2rem;
   background-color: var(--white);
   border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
   z-index: 1000;
 }
 
@@ -54,20 +42,23 @@ header {
   color: var(--black);
   position: absolute;
   left: 1.5rem;
+  transition: transform 0.3s ease; /* Transición para el efecto */
 }
 
-.title {
+.menu-toggle:hover {
+  transform: scale(1.2); /* Efecto de expansión */
+}
+
+.title, .center-title {
   font-family: 'Old Standard TT', serif;
   font-size: 2.5rem;
   color: var(--gold);
   text-decoration: none;
+  transition: text-shadow 0.3s ease-in-out; /* Transición para el efecto */
 }
 
-.center-title {
-  font-family: 'Old Standard TT', serif;
-  font-size: 2.5rem;
-  color: var(--gold);
-  text-decoration: none;
+.title:hover, .center-title:hover {
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.8), 0 0 20px rgba(212, 175, 55, 0.6);
 }
 
 a, button, img {
@@ -83,8 +74,8 @@ a, button, img {
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(4px);
   z-index: 999;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
 }
 
 .nav-menu.show {
@@ -99,7 +90,8 @@ a, button, img {
 }
 
 .nav-menu-content a {
-  font-weight: bold;
+  font-family: 'Old Standard TT', serif;
+  font-weight: normal;
   text-decoration: none;
   color: var(--black);
   font-size: 1.2rem;
@@ -116,20 +108,9 @@ a, button, img {
   margin-bottom: 2rem;
 }
 
-@keyframes fadeInHero {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 .hero {
   height: 100vh;
-  width: 100%;
-  background: url('img/fondo-logo.png') no-repeat center center;
-  background-size: cover;
+  background: url('img/fondo-logo.png') no-repeat center center / cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -138,19 +119,12 @@ a, button, img {
   position: relative;
 }
 
-.hero h1 {
-  font-family: 'UnifrakturCook', cursive;
-  font-size: 5rem;
-  color: var(--gold);
-  text-shadow: 1px 1px 4px #00000066;
-}
-
 .hero-button {
   position: absolute;
   bottom: 80px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(212, 175, 55, 0.9); /* Slightly transparent gold */
+  background-color: rgba(212, 175, 55, 0.9);
   color: var(--white);
   font-family: 'Old Standard TT', serif;
   font-size: 1.4rem;
@@ -177,10 +151,6 @@ a, button, img {
   margin: 0 auto;
 }
 
-section {
-  padding: 4rem 2rem;
-}
-
 .about h2, .contact h2 {
   font-family: 'Old Standard TT', serif;
   font-size: 2.2rem;
@@ -201,54 +171,14 @@ footer {
   color: var(--gray);
 }
 
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 3rem;
-  }
-
-  .title {
-    font-size: 2rem;
-  }
-
-  .nav-menu-content {
-    gap: 2rem;
-  }
-
-  .about, .contact {
-    padding: 4rem 1rem;
-  }
-
-  .about p, .contact p {
-    font-size: 16px;
-  }
-
-  .product-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.hidden {
-  display: none;
-}
-
-#menu {
-  position: absolute;
-  top: 60px;
-  left: 0;
-  background: white;
-  padding: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
 .catalog {
   padding: 2rem;
-  gap: 2.5rem;
 }
 
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 3rem;
+  gap: 2.5rem;
   justify-items: center;
 }
 
@@ -258,6 +188,7 @@ footer {
   padding: 2rem;
   text-align: center;
   max-width: 250px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .product-card img {
@@ -280,4 +211,26 @@ footer {
   height: 20px;
   border-radius: 50%;
   margin: 0.5rem auto 0;
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .nav-menu-content {
+    gap: 2rem;
+  }
+
+  .about p, .contact p {
+    font-size: 16px;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
 }

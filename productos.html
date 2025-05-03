@@ -4,30 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GÉNESIS - Productos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body id="top">
   <header class="main-header">
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     <a href="index.html" class="title center-title">GÉNESIS</a>
   </header>
 
   <nav id="navMenu" class="nav-menu">
-    <!-- ...existing code from index.html... -->
+    <div class="nav-menu-content">
+      <button class="nav-menu-close" onclick="toggleMenu()">✕</button>
+      <a href="productos.html" onclick="toggleMenu()" style="font-family: 'Old Standard TT', serif; font-weight: normal; color: var(--black);">Camisetas</a>
+      <a href="index.html#sobre-nosotros" onclick="toggleMenu()" style="font-family: 'Old Standard TT', serif; font-weight: normal; color: var(--black);">Sobre Nosotros</a>
+      <a href="index.html#contacto" onclick="toggleMenu()" style="font-family: 'Old Standard TT', serif; font-weight: normal; color: var(--black);">Contacto</a>
+    </div>
   </nav>
 
   <section class="catalog">
-    <h2>Catálogo de Productos</h2>
-    <div class="product-grid">
+    <h2 style="font-family: 'Old Standard TT', serif; font-weight: bold; font-size: 2.5rem; color: var(--gold); margin-bottom: 3rem;">Camisetas</h2>
+    <div class="product-grid" style="gap: 2rem;">
       <div class="product-card">
         <img src="img/frente-negra.jpg" alt="Camiseta Negra" class="product-image" data-hover="img/espalda-negra.jpg">
-        <h3>Camiseta Negra</h3>
+        <h3 style="font-family: 'Old Standard TT', serif; font-weight: bold; font-size: 1.2rem;">El Inicio de Todo</h3>
         <p>$90,000 COP</p>
         <div class="color-indicator" style="background-color: black;"></div>
       </div>
       <div class="product-card">
         <img src="img/frente-crema.jpg" alt="Camiseta Crema" class="product-image" data-hover="img/espalda-crema.jpg">
-        <h3>Camiseta Crema</h3>
+        <h3 style="font-family: 'Old Standard TT', serif; font-weight: bold; font-size: 1.2rem;">El Inicio de Todo</h3>
         <p>$90,000 COP</p>
         <div class="color-indicator" style="background-color: #f5f5dc;"></div>
       </div>
