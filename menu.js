@@ -93,35 +93,27 @@ document.addEventListener('DOMContentLoaded', () => {
       const csvData = await response.text();
       const rows = csvData.split("\n").slice(1).filter(row => row.trim() !== ""); // Skip header row and filter empty rows
 
-      const stock = {};
-      rows.forEach(row => {
+      const stock = rows.reduce((acc, row) => {
         const [color, size, quantity] = row.split(",");
         const key = `${color.toLowerCase()}-${size.toUpperCase()}`;
-        stock[key] = parseInt(quantity, 10);
-      });
+        acc[key] = parseInt(quantity, 10);
+        return acc;
+      }, {});
 
       // Update button stock status
       document.querySelectorAll(".size-option").forEach(button => {
         const key = button.dataset.key;
-        if (stock[key] === 0) {
-          button.classList.add("unavailable");
-          button.disabled = true;
-        } else {
-          button.classList.remove("unavailable");
-          button.disabled = false;
-        }
+        const isOutOfStock = stock[key] === 0;
+        button.classList.toggle("unavailable", isOutOfStock);
+        button.disabled = isOutOfStock;
       });
 
       // Update product card stock status
       document.querySelectorAll(".product-card").forEach(card => {
         const color = card.dataset.color.toLowerCase();
         const sizes = ["S", "M", "L"];
-        const isOutOfStock = sizes.every(size => stock[`${color}-${size}`] === 0); // Check all sizes
-        if (isOutOfStock) {
-          card.classList.add("agotado");
-        } else {
-          card.classList.remove("agotado");
-        }
+        const isOutOfStock = sizes.every(size => stock[`${color}-${size}`] === 0);
+        card.classList.toggle("agotado", isOutOfStock);
       });
     } catch (error) {
       console.error("Error fetching inventory:", error);

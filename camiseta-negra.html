@@ -80,12 +80,12 @@
         const response = await fetch(inventoryUrl, { cache: "no-store" });
         const csvData = await response.text();
         const rows = csvData.split("\n").slice(1).filter(row => row.trim() !== ""); // Skip header and filter empty rows
-        stock = {};
-        rows.forEach(row => {
+        stock = rows.reduce((acc, row) => {
           const [color, size, quantity] = row.split(",");
           const key = `${color.toLowerCase()}-${size.toUpperCase()}`;
-          stock[key] = parseInt(quantity, 10);
-        });
+          acc[key] = parseInt(quantity, 10);
+          return acc;
+        }, {});
       } catch (error) {
         console.error("Error fetching stock data:", error);
       }

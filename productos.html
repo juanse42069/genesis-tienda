@@ -62,12 +62,16 @@
   </footer>
   <script src="menu.js"></script>
   <script>
+    function toggleSizeGuide(show) {
+      document.getElementById('sizeGuideModal').classList.toggle('show', show);
+    }
+
     function openSizeGuide() {
-      document.getElementById('sizeGuideModal').classList.add('show');
+      toggleSizeGuide(true);
     }
 
     function closeSizeGuide() {
-      document.getElementById('sizeGuideModal').classList.remove('show');
+      toggleSizeGuide(false);
     }
   </script>
 </body>
