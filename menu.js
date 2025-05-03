@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll(".product-card").forEach(card => {
         const color = card.dataset.color.toLowerCase();
         const sizes = ["S", "M", "L"];
-        const isOutOfStock = sizes.every(size => stock[`${color}-${size}`] === 0);
+        const isOutOfStock = sizes.every(size => stock[`${color}-${size}`] === 0 || isNaN(stock[`${color}-${size}`])); // Check all sizes
         card.classList.toggle("agotado", isOutOfStock);
       });
     } catch (error) {
