@@ -117,45 +117,12 @@ a, button, img {
 }
 
 .hero {
-  position: relative;
+  background: url('img/fondo-logo.png') no-repeat center center/cover;
   height: 100vh;
-  width: 100%;
-  background-color: black;
   display: flex;
-  justify-content: center;
   align-items: center;
-  flex-direction: column;
-}
-
-.fondo-logo {
-  max-width: 80%;
-  height: auto;
-  opacity: 0;
-  animation: fadeIn 1.5s ease forwards;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
-
-.ver-producto-btn {
-  margin-top: 30px;
-  padding: 12px 28px;
-  font-family: 'Georgia', serif;
-  font-size: 14px;
-  color: #fff;
-  background-color: #bfa65a;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-  border-radius: 3px;
-}
-
-.ver-producto-btn:hover {
-  background-color: #a68f4a;
+  justify-content: center;
+  border: 1.5px solid #e0e0e0;
 }
 
 .hero h1 {
