@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else if (startX < endX - 50) {
         // Deslizar hacia la derecha
         const leftArrow = slider.querySelector('.arrow.left');
-        if (leftArrow) leftArrow.click();
+        if (leftArrow) rightArrow.click();
       }
     });
   });
@@ -103,9 +103,11 @@ document.addEventListener('DOMContentLoaded', () => {
       // Update button stock status
       document.querySelectorAll(".size-option").forEach(button => {
         const key = button.dataset.key;
-        const isOutOfStock = stock[key] === 0;
+        const availableStock = stock[key] || 0;
+        const isOutOfStock = availableStock === 0;
         button.classList.toggle("unavailable", isOutOfStock);
         button.disabled = isOutOfStock;
+        button.dataset.maxQuantity = availableStock; // Store max quantity in data attribute
       });
 
       // Update product card stock status
@@ -118,6 +120,16 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       console.error("Error fetching inventory:", error);
     }
+  };
+
+  const changeQuantity = (change) => {
+    if (!selectedSize) {
+      alert('Por favor selecciona una talla.');
+      return;
+    }
+    const maxQuantity = parseInt(document.querySelector(`.size-option[data-key="${selectedColor}-${selectedSize}"]`).dataset.maxQuantity, 10) || 0;
+    quantity = Math.max(1, Math.min(maxQuantity, quantity + change));
+    document.getElementById('quantity').textContent = quantity;
   };
 
   // Update stock status immediately on page load
