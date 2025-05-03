@@ -595,4 +595,20 @@ quantity-selector span {
   filter: grayscale(100%); /* Grayscale effect */
   opacity: 0.6; /* Slightly faded */
   pointer-events: none; /* Disable interactions */
+  position: relative; /* Ensure the watermark is positioned correctly */
+}
+
+.product-card.agotado::after {
+  content: "Agotado";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg); /* Center and rotate the text */
+  font-family: 'Old Standard TT', serif;
+  font-size: 2rem;
+  color: rgba(128, 0, 0, 0.5); /* Transparent vinotinto color */
+  text-transform: uppercase;
+  font-weight: bold;
+  pointer-events: none; /* Ensure the watermark does not interfere with interactions */
+  z-index: 1; /* Ensure it appears above other content */
 }
