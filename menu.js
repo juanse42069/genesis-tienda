@@ -122,6 +122,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  // Update stock status immediately on page load
+  updateStockStatus();
+
+  // Periodically refresh stock status every 30 seconds
+  setInterval(updateStockStatus, 30000);
+
+  // Force refresh stock data when the page is reloaded
+  window.addEventListener('load', updateStockStatus);
+
   const changeQuantity = (change) => {
     if (!selectedSize) {
       alert('Por favor selecciona una talla.');
@@ -131,12 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
     quantity = Math.max(1, Math.min(maxQuantity, quantity + change));
     document.getElementById('quantity').textContent = quantity;
   };
-
-  // Update stock status immediately on page load
-  updateStockStatus();
-
-  // Periodically refresh stock status every 30 seconds
-  setInterval(updateStockStatus, 30000);
 
   // Handle size selection
   document.querySelectorAll(".size-option").forEach(button => {
