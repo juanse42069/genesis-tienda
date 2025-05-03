@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const updateStockStatus = async () => {
     try {
-      const response = await fetch(inventoryUrl);
+      const response = await fetch(inventoryUrl, { cache: "no-store" }); // Ensure fresh data is fetched
       const csvData = await response.text();
       const rows = csvData.split("\n").slice(1); // Skip header row
 
