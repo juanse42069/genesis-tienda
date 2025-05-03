@@ -9,6 +9,44 @@
   <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1.5s forwards;
+      display: block;
+      margin: 0 auto;
+      max-width: 90%;
+      height: auto;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .btn-ver-producto {
+      background-color: #bfa65a;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-ver-producto:hover {
+      background-color: #a58f4a;
+    }
+  </style>
 </head>
 <body id="top">
   <header class="main-header">
@@ -25,7 +63,12 @@
     </div>
   </nav>
 
-  <section class="hero" style="border: 1.5px solid #e0e0e0;"></section>
+  <section class="hero" style="border: 1.5px solid #e0e0e0;">
+    <img src="fondo-logo.png" alt="Logo Génesis" class="fade-in">
+    <div class="button-container">
+      <a href="productos.html" class="btn-ver-producto">VER PRODUCTO</a>
+    </div>
+  </section>
 
   <section class="section about" id="sobre-nosotros">
     <h2>Sobre Nosotros</h2>
