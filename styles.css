@@ -1,5 +1,5 @@
 :root {
-  --gold: #d4af37;
+  --gold: #b89d5a; /* Tono dorado más serio */
   --black: #000000;
   --gray: #333333;
   --white: #ffffff;
@@ -59,7 +59,7 @@ header, .main-header {
 }
 
 .title:hover, .center-title:hover {
-  text-shadow: 0 0 10px rgba(212, 175, 55, 0.8), 0 0 20px rgba(212, 175, 55, 0.6);
+  text-shadow: 0 0 10px rgba(184, 157, 90, 0.8), 0 0 20px rgba(184, 157, 90, 0.6); /* Ajusta el brillo */
 }
 
 a, button, img {
@@ -111,7 +111,7 @@ a, button, img {
   font-weight: normal;
   text-decoration: none;
   color: var(--black);
-  font-size: 1.1rem; /* Ajusta el tamaño para móviles */
+  font-size: 1.4rem; /* Agranda el tamaño del texto */
   padding: 0.5rem 0;
   border-bottom: 1px solid #eee;
   transition: color 0.3s ease;
@@ -157,7 +157,7 @@ a, button, img {
   bottom: 10%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(212, 175, 55, 0.9);
+  background-color: var(--gold);
   color: var(--white);
   font-family: 'Old Standard TT', serif;
   font-size: 1.4rem;
@@ -173,7 +173,7 @@ a, button, img {
 }
 
 .hero-button:hover {
-  box-shadow: 0 0 15px 4px rgba(212, 175, 55, 0.8);
+  box-shadow: 0 0 15px 4px rgba(184, 157, 90, 0.8); /* Ajusta el brillo del hover */
   transform: translateX(-50%) scale(1.05);
 }
 
@@ -328,7 +328,7 @@ footer {
 }
 
 .product-options button:hover {
-  background-color: #b38e2e;
+  background-color: #9c8650; /* Tono más oscuro para el hover */
 }
 
 .size-selector {
@@ -355,7 +355,7 @@ footer {
 }
 
 .size-option.selected {
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.8); /* Brillo dorado al seleccionar */
+  box-shadow: 0 0 10px rgba(184, 157, 90, 0.8); /* Brillo dorado más serio */
   background-color: var(--gold);
   color: var(--white);
 }
