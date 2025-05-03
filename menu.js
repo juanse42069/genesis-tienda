@@ -114,8 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll(".product-card").forEach(card => {
         const color = card.dataset.color.toLowerCase();
         const sizes = ["S", "M", "L"];
-        const isOutOfStock = sizes.every(size => stock[`${color}-${size}`] === 0 || isNaN(stock[`${color}-${size}`])); // Check all sizes
-        card.classList.toggle("agotado", isOutOfStock);
+        const hasStock = sizes.some(size => stock[`${color}-${size}`] > 0); // Check if any size has stock
+        card.classList.toggle("agotado", !hasStock); // Apply "agotado" only if all sizes are out of stock
       });
     } catch (error) {
       console.error("Error fetching inventory:", error);
