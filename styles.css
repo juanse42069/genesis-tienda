@@ -284,14 +284,16 @@ footer {
   font-family: 'Inter', sans-serif;
   font-size: 1rem;
   padding: 0.75rem 2rem;
-  border: 1px solid var(--black);
-  background: transparent;
-  color: var(--black);
+  border: none;
+  background-color: #C7A44F; /* dorado elegante */
+  color: #fff;
   text-decoration: none;
+  border-radius: 4px;
   transition: background-color 0.3s ease;
+  letter-spacing: 0.05em;
 }
 
 .hero-button:hover {
-  background-color: var(--black);
-  color: var(--white);
+  background-color: #b08d3e;
+  color: #fff;
 }
