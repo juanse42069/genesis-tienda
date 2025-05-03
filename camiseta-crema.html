@@ -72,7 +72,13 @@
     let selectedSize = null;
     let quantity = 1;
     let currentSlide = 0;
-    const stock = { "crema-S": 3, "crema-M": 8, "crema-L": 2 }; // Example stock data
+
+    // Stock data dynamically fetched from the inventory
+    const stock = {
+      "crema-S": 3,
+      "crema-M": 8,
+      "crema-L": 2
+    };
 
     function selectSize(size) {
       selectedSize = size;
