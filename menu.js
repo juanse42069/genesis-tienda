@@ -7,11 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll("#navMenu a").forEach(link => link.addEventListener("click", toggleMenu));
 
-  document.querySelectorAll('.product-image').forEach(image => {
-    const hoverSrc = image.dataset.hover;
-    const originalSrc = image.src;
-
-    image.addEventListener('mouseenter', () => image.src = hoverSrc);
-    image.addEventListener('mouseleave', () => image.src = originalSrc);
+  document.addEventListener("click", (event) => {
+    if (!navMenu.contains(event.target) && !event.target.classList.contains("menu-toggle")) {
+      navMenu.classList.remove("show");
+    }
   });
 });

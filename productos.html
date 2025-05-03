@@ -19,22 +19,22 @@
   <nav id="navMenu" class="nav-menu">
     <div class="nav-menu-content">
       <button class="nav-menu-close" onclick="toggleMenu()">✕</button>
-      <a href="productos.html" onclick="toggleMenu()" style="font-family: 'Old Standard TT', serif; font-weight: normal; color: var(--black);">Camisetas</a>
-      <a href="index.html#sobre-nosotros" onclick="toggleMenu()" style="font-family: 'Old Standard TT', serif; font-weight: normal; color: var(--black);">Sobre Nosotros</a>
-      <a href="index.html#contacto" onclick="toggleMenu()" style="font-family: 'Old Standard TT', serif; font-weight: normal; color: var(--black);">Contacto</a>
+      <a href="productos.html" onclick="toggleMenu()">Camisetas</a>
+      <a href="index.html#sobre-nosotros" onclick="toggleMenu()">Sobre Nosotros</a>
+      <a href="index.html#contacto" onclick="toggleMenu()">Contacto</a>
     </div>
   </nav>
 
   <section class="catalog">
-    <h2 style="font-family: 'Old Standard TT', serif; font-weight: bold; font-size: 2.5rem; color: var(--gold); margin-bottom: 3rem;">Camisetas</h2>
-    <div class="product-grid" style="gap: 2rem;">
-      <div class="product-card">
+    <h2 style="font-family: 'Old Standard TT', serif; font-weight: bold; font-size: 2rem; color: var(--gold); margin-bottom: 2rem;">Camisetas</h2>
+    <div class="product-grid">
+      <div class="product-card" onclick="location.href='camiseta-negra.html'">
         <img src="img/frente-negra.jpg" alt="Camiseta Negra" class="product-image" data-hover="img/espalda-negra.jpg">
         <h3 style="font-family: 'Old Standard TT', serif; font-weight: bold; font-size: 1.2rem;">El Inicio de Todo</h3>
         <p>$90,000 COP</p>
         <div class="color-indicator" style="background-color: black;"></div>
       </div>
-      <div class="product-card">
+      <div class="product-card" onclick="location.href='camiseta-crema.html'">
         <img src="img/frente-crema.jpg" alt="Camiseta Crema" class="product-image" data-hover="img/espalda-crema.jpg">
         <h3 style="font-family: 'Old Standard TT', serif; font-weight: bold; font-size: 1.2rem;">El Inicio de Todo</h3>
         <p>$90,000 COP</p>
@@ -43,7 +43,9 @@
     </div>
   </section>
   <footer>
-    © 2025 GÉNESIS. Todos los derechos reservados.
+    <div style="background-color: #f9f9f9; padding: 1rem; text-align: center; font-size: 0.9rem; color: var(--gray);">
+      © 2025 GÉNESIS. Todos los derechos reservados.
+    </div>
   </footer>
   <script src="menu.js"></script>
 </body>

@@ -20,6 +20,7 @@ body {
   font-family: 'Inter', sans-serif;
   color: var(--black);
   overflow-x: hidden;
+  line-height: 1.6; /* Mejora la legibilidad */
 }
 
 header, .main-header {
@@ -69,24 +70,40 @@ a, button, img {
   position: fixed;
   top: 0;
   left: 0;
-  width: 80vw;
-  height: 100vh;
+  width: 35vw; /* Ancho para escritorio */
+  height: 100vh; /* Ocupa toda la altura de la pantalla */
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(4px);
   z-index: 999;
   transform: translateX(-100%);
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  overflow-y: auto; /* Permite desplazamiento si es necesario */
+  opacity: 0; /* Inicialmente invisible */
+  padding-top: 4.5rem; /* Asegura que el contenido comience debajo de la barra blanca */
 }
 
 .nav-menu.show {
   transform: translateX(0);
+  opacity: 1; /* Hace visible el menú */
 }
 
 .nav-menu-content {
-  padding: 2rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
+  animation: slideIn 0.5s ease-in-out; /* Efecto de entrada elegante */
+}
+
+@keyframes slideIn {
+  from {
+    transform: translate(-20px, -20px);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
 }
 
 .nav-menu-content a {
@@ -94,9 +111,14 @@ a, button, img {
   font-weight: normal;
   text-decoration: none;
   color: var(--black);
-  font-size: 1.2rem;
+  font-size: 1.1rem; /* Ajusta el tamaño para móviles */
   padding: 0.5rem 0;
   border-bottom: 1px solid #eee;
+  transition: color 0.3s ease;
+}
+
+.nav-menu-content a:hover {
+  color: var(--gold); /* Cambia el color al pasar el mouse */
 }
 
 .nav-menu-close {
@@ -105,7 +127,7 @@ a, button, img {
   cursor: pointer;
   background: none;
   border: none;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .hero {
@@ -132,14 +154,13 @@ a, button, img {
 
 .hero-button {
   position: absolute;
-  bottom: 80px;
+  bottom: 10%;
   left: 50%;
   transform: translateX(-50%);
   background-color: rgba(212, 175, 55, 0.9);
   color: var(--white);
   font-family: 'Old Standard TT', serif;
   font-size: 1.4rem;
-  text-transform: uppercase;
   padding: 12px 24px;
   border: none;
   border-radius: 8px;
@@ -224,6 +245,156 @@ footer {
   margin: 0.5rem auto 0;
 }
 
+.product-detail {
+  display: flex;
+  flex-direction: row; /* Mantén el diseño en fila para escritorio */
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.slider {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  height: auto; /* Asegura que el contenedor del slider tenga altura */
+}
+
+.slider img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.5s ease-in-out; /* Transición suave para el cambio de imagen */
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0; /* Inicialmente invisible */
+  z-index: 0; /* Asegura que las imágenes no se superpongan incorrectamente */
+}
+
+.slider img.active {
+  opacity: 1; /* Imagen activa visible */
+  z-index: 1; /* Asegura que la imagen activa esté al frente */
+  position: relative;
+}
+
+.slider .arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: var(--white);
+  border: none;
+  font-size: 2rem; /* Ajusta el tamaño para móviles */
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 10;
+  border-radius: 50%;
+}
+
+.slider .arrow.left {
+  left: 10px;
+}
+
+.slider .arrow.right {
+  right: 10px;
+}
+
+.product-options {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.product-options label {
+  font-family: 'Old Standard TT', serif;
+  font-size: 1.5rem; /* Aumenta el tamaño de los subtítulos */
+  color: var(--black);
+  margin-bottom: 0.5rem;
+}
+
+.product-options select, .product-options button {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.product-options button {
+  background-color: var(--gold);
+  color: var(--white);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.product-options button:hover {
+  background-color: #b38e2e;
+}
+
+.size-selector {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-start; /* Centra los botones */
+}
+
+.size-option {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  cursor: pointer;
+  font-family: 'Old Standard TT', serif;
+  font-size: 1rem;
+  background-color: var(--white);
+  border: 1px solid #ddd;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.size-option:hover {
+  background-color: rgba(212, 175, 55, 0.2); /* Efecto al pasar el mouse */
+}
+
+.size-option.selected {
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.8); /* Brillo dorado al seleccionar */
+  background-color: var(--gold);
+  color: var(--white);
+}
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: flex-start; /* Centra los botones */
+}
+
+quantity-selector button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: var(--gold);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+quantity-selector span {
+  font-size: 1rem;
+  font-family: 'Old Standard TT', serif;
+}
+
+#size-guide {
+  font-family: 'Old Standard TT', serif;
+  font-size: 1rem;
+  color: var(--black);
+  text-align: center;
+  cursor: pointer;
+  transition: text-shadow 0.3s ease;
+}
+
+#size-guide:hover {
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+}
+
 @media (max-width: 768px) {
   .hero h1 {
     font-size: 3rem;
@@ -233,8 +404,12 @@ footer {
     font-size: 2rem;
   }
 
+  .nav-menu {
+    width: 50vw; /* Ajusta el ancho para dispositivos móviles */
+  }
+
   .nav-menu-content {
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
   .about p, .contact p {
@@ -243,5 +418,33 @@ footer {
 
   .product-grid {
     grid-template-columns: 1fr;
+  }
+
+  .product-detail {
+    flex-direction: column; /* Cambia a columna para móviles */
+    align-items: center;
+  }
+
+  .slider img {
+    width: 100%;
+  }
+
+  .quantity-selector {
+    gap: 0.5rem;
+  }
+
+  .size-option {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+  }
+
+  .hero-button {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+
+  .quantity-selector button {
+    padding: 0.4rem 0.8rem;
   }
 }

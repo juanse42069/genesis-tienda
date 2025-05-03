@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camiseta Crema</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+  <header class="main-header">
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <a href="index.html" class="title center-title">GÉNESIS</a>
+  </header>
+
+  <nav id="navMenu" class="nav-menu">
+    <div class="nav-menu-content">
+      <button class="nav-menu-close" onclick="toggleMenu()">✕</button>
+      <a href="productos.html" onclick="toggleMenu()">Camisetas</a>
+      <a href="index.html#sobre-nosotros" onclick="toggleMenu()">Sobre Nosotros</a>
+      <a href="index.html#contacto" onclick="toggleMenu()">Contacto</a>
+    </div>
+  </nav>
+
+  <section class="product-detail">
+    <div class="slider">
+      <button class="arrow left" onclick="changeSlide(-1)">&#8249;</button>
+      <img src="img/frente-crema.jpg" alt="Camiseta Crema Frente" class="active">
+      <img src="img/espalda-crema.jpg" alt="Camiseta Crema Espalda">
+      <button class="arrow right" onclick="changeSlide(1)">&#8250;</button>
+    </div>
+    <div class="product-options">
+      <h1 style="font-family: 'Old Standard TT', serif; font-size: 2rem; font-weight: bold; color: var(--gold); margin-bottom: 1rem;">
+        Camiseta oversized, El Origen De Todo, Crema, Genesis
+      </h1>
+      <label for="size">Talla:</label>
+      <div class="size-selector">
+        <div class="size-option" onclick="selectSize('M')">M</div>
+        <div class="size-option" onclick="selectSize('L')">L</div>
+      </div>
+      <p id="size-guide" onclick="toggleSizeGuide()">Guía de Tallas</p>
+      <img id="size-guide-image" src="img/guia-tallas.jpg" alt="Guía de Tallas" style="display: none; width: 100%; margin-top: 1rem;">
+
+      <label for="quantity">Cantidad:</label>
+      <div class="quantity-selector">
+        <button onclick="changeQuantity(-1)">-</button>
+        <span id="quantity">1</span>
+        <button onclick="changeQuantity(1)">+</button>
+      </div>
+      <p style="font-family: 'Old Standard TT', serif; font-size: 1.2rem; color: var(--black); margin-top: 0.5rem;">Precio: $90,000 COP</p>
+      <button onclick="makeOrder()">Hacer Pedido</button>
+    </div>
+  </section>
+
+  <footer>
+    <div style="background-color: #f9f9f9; padding: 1rem; text-align: center; font-size: 0.9rem; color: var(--gray);">
+      © 2025 GÉNESIS. Todos los derechos reservados.
+    </div>
+  </footer>
+
+  <script>
+    let selectedSize = null;
+    let quantity = 1;
+    let currentSlide = 0;
+
+    function selectSize(size) {
+      selectedSize = size;
+      document.querySelectorAll('.size-option').forEach(option => option.classList.remove('selected'));
+      document.querySelectorAll('.size-option').forEach(option => {
+        if (option.textContent === size) option.classList.add('selected');
+      });
+    }
+
+    function toggleSizeGuide() {
+      const guide = document.getElementById('size-guide-image');
+      guide.style.display = guide.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function changeQuantity(change) {
+      quantity = Math.max(1, Math.min(5, quantity + change));
+      document.getElementById('quantity').textContent = quantity;
+    }
+
+    function makeOrder() {
+      if (!selectedSize) {
+        alert('Por favor selecciona una talla.');
+        return;
+      }
+      const message = `Hola Genesis 👋, deseo ordenar la camisa "El inicio de todo" 👁️, color crema, talla ${selectedSize}, cantidad ${quantity}. 🔥`;
+      window.open(`https://wa.me/573176650424?text=${encodeURIComponent(message)}`);
+    }
+
+    function changeSlide(direction) {
+      const slides = document.querySelectorAll('.slider img');
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + direction + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }
+  </script>
+  <script src="menu.js"></script>
+</body>
+</html>
