@@ -20,15 +20,20 @@
 
   <nav id="navMenu" class="nav-menu">
     <div class="nav-menu-content">
-      <button class="nav-menu-close" onclick="toggleMenu()">✕</button>
-      <a href="productos.html" onclick="toggleMenu()">Camisetas</a>
+      <button class="nav-menu-close" onclick="toggleMenu()">‹</button>
+      <a href="#" class="submenu-link">Colecciones</a>
       <a href="index.html#sobre-nosotros" onclick="toggleMenu()">Sobre Nosotros</a>
       <a href="index.html#contacto" onclick="toggleMenu()">Contacto</a>
     </div>
   </nav>
 
+  <div class="submenu">
+    <button class="nav-menu-close">‹</button>
+    <a href="productos.html" onclick="toggleMenu()">El Origen de Todo</a>
+  </div>
+
   <section class="catalog">
-    <h2 style="font-family: 'Old Standard TT', serif; font-weight: bold; font-size: 2rem; color: var(--gold); margin-bottom: 2rem;">Camisetas</h2>
+    <h2 style="font-family: 'Old Standard TT', serif; font-weight: bold; font-size: 2rem; color: var(--gold); margin-bottom: 2rem;">El origen de todo</h2>
     <div class="product-grid">
       <div class="product-card" onclick="location.href='camiseta-negra.html'">
         <img src="img/frente-negra.jpg" alt="Camiseta Negra" class="product-image" data-hover="img/espalda-negra.jpg">
@@ -44,11 +49,26 @@
       </div>
     </div>
   </section>
+  <div id="sizeGuideModal" class="modal" onclick="closeSizeGuide()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <img src="img/guia-tallas.jpg" alt="Guía de Tallas">
+      <button class="modal-close" onclick="closeSizeGuide()">×</button>
+    </div>
+  </div>
   <footer>
     <div style="background-color: #f9f9f9; padding: 1rem; text-align: center; font-size: 0.9rem; color: var(--gray);">
       © 2025 GÉNESIS. Todos los derechos reservados.
     </div>
   </footer>
   <script src="menu.js"></script>
+  <script>
+    function openSizeGuide() {
+      document.getElementById('sizeGuideModal').classList.add('show');
+    }
+
+    function closeSizeGuide() {
+      document.getElementById('sizeGuideModal').classList.remove('show');
+    }
+  </script>
 </body>
 </html>
