@@ -135,4 +135,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // Apply fade-in effect to all elements with the class 'fade-in-from-top'
+  document.querySelectorAll('.fade-in-from-top').forEach((element, index) => {
+    element.style.animationDelay = `${index * 0.1}s`; // Staggered animation
+    element.classList.add('fade-in-from-top');
+  });
 });
