@@ -11,93 +11,6 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body id="top">
-  <!-- Hero con imagen de fondo a pantalla completa -->
-  <section class="hero-fullscreen">
-    <div class="navbar-content">
-      <img src="img/logo-genesis.png" alt="Logo Génesis" class="logo-navbar" />
-      <div class="menu-icons">
-        <!-- Aquí van tus íconos: menú hamburguesa, lupa, carrito, etc -->
-      </div>
-    </div>
-
-    <div class="hero-texto">
-      <h1>LA PORTA DEL CIELO</h1>
-      <p>FOR YOUR VACATIONAL SOUL</p>
-    </div>
-  </section>
-
-  <nav id="navMenu" class="nav-menu">
-    <div class="nav-menu-content">
-      <button class="nav-menu-close" onclick="toggleMenu()">✕</button>
-      <a href="#sobre-nosotros" onclick="toggleMenu()">Sobre Nosotros</a>
-      <a href="productos.html" onclick="toggleMenu()">Productos</a>
-      <a href="#contacto" onclick="toggleMenu()">Contacto</a>
-    </div>
-  </nav>
-
-  <section class="sobre-nosotros" id="sobre-nosotros">
-    <h2>Sobre Nosotros</h2>
-    <p>GÉNESIS nace como una manifestación artística de lo sagrado y lo moderno. Buscamos crear piezas únicas que inspiren transformación y conciencia, con símbolos que evocan lo divino en cada prenda.</p>
-  </section>
-
-  <section class="section contact" id="contacto">
-    <h2>Contacto</h2>
-    <p>Instagram: <a href="https://instagram.com/genesis.1.00" target="_blank">@genesis.1.00</a></p>
-    <p>Email: <a href="mailto:genesiswearline@gmail.com">genesiswearline@gmail.com</a></p>
-  </section>
-
-  <footer>
-    © 2025 GÉNESIS. Todos los derechos reservados.
-  </footer>
-
-  <script src="menu.js"></script>
-  <script>
-    let lastScrollTop = 0;
-    const header = document.querySelector('.main-header');
-
-    window.addEventListener('scroll', function() {
-      const currentScroll = window.scrollY;
-      if (currentScroll === 0) {
-        header.classList.add('hide');
-        header.style.backgroundColor = 'transparent';
-      } else {
-        header.classList.remove('hide');
-        header.style.backgroundColor = 'white';
-      }
-      lastScrollTop = currentScroll;
-    });
-
-    // Ejecuta inmediatamente al cargar para ocultarla si estamos arriba
-    if (window.scrollY === 0) {
-      header.classList.add('hide');
-      header.style.backgroundColor = 'transparent';
-    }
-
-    const navbar = document.querySelector('.navbar-content');
-
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 10) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
-  </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GÉNESIS - Tienda Oficial</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body id="top">
   <header class="main-header">
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
     <a href="index.html" class="title center-title">GÉNESIS</a>
@@ -112,12 +25,9 @@
     </div>
   </nav>
 
-  <section class="hero-section">
-    <img src="img/fondo-logo.png" alt="Logo GÉNESIS" class="hero-image">
-    <a href="productos.html" class="hero-button">Ver colección</a>
-  </section>
+  <section class="hero" style="border: 1.5px solid #e0e0e0;"></section>
 
-  <section class="sobre-nosotros" id="sobre-nosotros">
+  <section class="section about" id="sobre-nosotros">
     <h2>Sobre Nosotros</h2>
     <p>GÉNESIS nace como una manifestación artística de lo sagrado y lo moderno. Buscamos crear piezas únicas que inspiren transformación y conciencia, con símbolos que evocan lo divino en cada prenda.</p>
   </section>
@@ -133,27 +43,5 @@
   </footer>
 
   <script src="menu.js"></script>
-  <script>
-    let lastScrollTop = 0;
-    const header = document.querySelector('.main-header');
-
-    window.addEventListener('scroll', function() {
-      const currentScroll = window.scrollY;
-      if (currentScroll === 0) {
-        header.classList.add('hide');
-        header.style.backgroundColor = 'transparent';
-      } else {
-        header.classList.remove('hide');
-        header.style.backgroundColor = 'white';
-      }
-      lastScrollTop = currentScroll;
-    });
-
-    // Ejecuta inmediatamente al cargar para ocultarla si estamos arriba
-    if (window.scrollY === 0) {
-      header.classList.add('hide');
-      header.style.backgroundColor = 'transparent';
-    }
-  </script>
 </body>
 </html>
