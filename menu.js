@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll(".product-card").forEach(card => {
         const color = card.dataset.color.toLowerCase();
         const sizes = ["S", "M", "L"];
-        const isOutOfStock = sizes.every(size => stock[`${color}-${size}`] === 0);
+        const isOutOfStock = sizes.every(size => stock[`${color}-${size}`] === 0); // Check all sizes
         if (isOutOfStock) {
           card.classList.add("agotado");
         } else {
@@ -128,7 +128,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  // Update stock status immediately on page load
   updateStockStatus();
+
+  // Periodically refresh stock status every 30 seconds
+  setInterval(updateStockStatus, 30000);
 
   // Handle size selection
   document.querySelectorAll(".size-option").forEach(button => {

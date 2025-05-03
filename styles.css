@@ -606,7 +606,7 @@ quantity-selector span {
   transform: translate(-50%, -50%) rotate(-45deg); /* Center and rotate the text */
   font-family: 'Old Standard TT', serif;
   font-size: 2rem;
-  color: rgba(128, 0, 0, 0.5); /* Transparent vinotinto color */
+  color: rgba(128, 0, 0, 0.8); /* Less transparent vinotinto color */
   text-transform: uppercase;
   font-weight: bold;
   pointer-events: none; /* Ensure the watermark does not interfere with interactions */
