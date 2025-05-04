@@ -1019,3 +1019,17 @@ quantity-selector span {
     overflow: hidden; /* Hide the cropped parts of the image */
   }
 }
+
+@media (max-width: 768px) {
+  .image-container img {
+    width: 100%; /* Maintain full width */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Crop the sides of the image */
+    object-position: center; /* Center the image content */
+    clip-path: inset(0 15% 0 15%); /* Crop 15% from both sides */
+  }
+
+  .image-container {
+    overflow: hidden; /* Hide the cropped parts of the image */
+  }
+}
