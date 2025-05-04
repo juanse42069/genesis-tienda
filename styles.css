@@ -678,9 +678,13 @@ quantity-selector span {
   }
 
   .text-overlay {
-    top: 85%; /* Adjust position for mobile */
+    top: 90%; /* Adjust position for mobile */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%; /* Expand text box width closer to the image edges */
     padding: 1rem;
-    font-size: 0.9rem; /* Adjust font size for better readability */
+    font-size: 1rem; /* Slightly increase font size for better readability */
+    line-height: 1.5; /* Improve readability on smaller screens */
   }
 
   .brand-title {
@@ -688,8 +692,9 @@ quantity-selector span {
   }
 
   .brand-description {
-    font-size: 0.9rem; /* Adjust description size for mobile */
-    line-height: 1.4; /* Improve readability on smaller screens */
+    font-size: 1rem; /* Increase description size for mobile */
+    line-height: 1.5; /* Improve readability */
+    text-align: justify; /* Align text for better appearance */
   }
 }
 
@@ -919,10 +924,10 @@ quantity-selector span {
     top: 90%; /* Adjust position for mobile */
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 90%; /* Allow text to extend across the image without touching edges */
+    width: 95%; /* Expand text box width closer to the image edges */
     padding: 1rem;
-    font-size: 0.8rem; /* Reduce font size for better readability */
-    line-height: 1.4; /* Improve readability on smaller screens */
+    font-size: 1rem; /* Slightly increase font size for better readability */
+    line-height: 1.5; /* Improve readability on smaller screens */
   }
 
   .brand-title {
@@ -931,8 +936,8 @@ quantity-selector span {
   }
 
   .brand-description {
-    font-size: 0.8rem; /* Reduce description size for mobile */
-    line-height: 1.4; /* Improve readability */
+    font-size: 1rem; /* Increase description size for mobile */
+    line-height: 1.5; /* Improve readability */
     text-align: justify; /* Align text for better appearance */
   }
 }
