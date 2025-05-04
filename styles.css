@@ -897,3 +897,42 @@ quantity-selector span {
   margin: -1.5rem 0 0; /* Raise the subtitle closer to Génesis */
   text-shadow: none; /* Remove glow effect */
 }
+
+@media (max-width: 768px) {
+  .brand-header {
+    top: 12%; /* Adjust position for mobile */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  .genesis-title {
+    font-size: 2.5rem; /* Reduce font size for mobile */
+  }
+
+  .brand-subtitle {
+    font-size: 1.2rem; /* Reduce font size for mobile */
+    margin: -0.8rem 0 0; /* Adjust spacing for mobile */
+  }
+
+  .text-overlay {
+    top: 90%; /* Adjust position for mobile */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%; /* Allow text to extend across the image without touching edges */
+    padding: 1rem;
+    font-size: 0.8rem; /* Reduce font size for better readability */
+    line-height: 1.4; /* Improve readability on smaller screens */
+  }
+
+  .brand-title {
+    font-size: 1.8rem; /* Reduce title size for mobile */
+    margin-bottom: 0.5rem; /* Adjust spacing */
+  }
+
+  .brand-description {
+    font-size: 0.8rem; /* Reduce description size for mobile */
+    line-height: 1.4; /* Improve readability */
+    text-align: justify; /* Align text for better appearance */
+  }
+}
