@@ -936,3 +936,33 @@ quantity-selector span {
     text-align: justify; /* Align text for better appearance */
   }
 }
+
+@media (max-width: 768px) {
+  body {
+    background-position: center top;
+    background-size: cover; /* Ensure the background covers the viewport */
+    background-repeat: no-repeat;
+  }
+
+  .hero-section {
+    background-position: center top;
+    background-size: cover; /* Scale the background to fit */
+    padding: 2rem 1rem; /* Add padding to avoid content touching edges */
+  }
+
+  .hero-section img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Crop excess parts of the image */
+    object-position: center top; /* Focus on the top center of the image */
+  }
+
+  header, .text-content, .quienes-somos {
+    text-align: center;
+    font-size: 1rem; /* Adjust font size for better readability */
+  }
+
+  h1, h2 {
+    font-size: 1.5rem; /* Reduce font size for smaller screens */
+  }
+}
