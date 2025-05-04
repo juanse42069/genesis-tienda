@@ -546,6 +546,19 @@ quantity-selector span {
   cursor: pointer;
 }
 
+.image-container img {
+  max-width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+  margin: 0 auto; /* Center the image */
+}
+
+@media (max-width: 768px) {
+  .image-container img {
+    max-width: 90%; /* Reduce width for smaller screens */
+  }
+}
+
 @media (max-width: 768px) {
   .hero h1 {
     font-size: 2.5rem; /* Reduce font size for smaller screens */
