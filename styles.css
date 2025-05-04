@@ -660,6 +660,37 @@ quantity-selector span {
     max-width: 95vw; /* Increase image size for mobile */
     max-height: 95vh; /* Increase height for better visibility */
   }
+
+  .brand-header {
+    top: 10%; /* Adjust position for mobile */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  .genesis-title {
+    font-size: 3rem; /* Adjust font size for mobile */
+  }
+
+  .brand-subtitle {
+    font-size: 1.5rem; /* Adjust font size for mobile */
+    margin: -1rem 0 0; /* Adjust spacing for mobile */
+  }
+
+  .text-overlay {
+    top: 85%; /* Adjust position for mobile */
+    padding: 1rem;
+    font-size: 0.9rem; /* Adjust font size for better readability */
+  }
+
+  .brand-title {
+    font-size: 2rem; /* Adjust title size for mobile */
+  }
+
+  .brand-description {
+    font-size: 0.9rem; /* Adjust description size for mobile */
+    line-height: 1.4; /* Improve readability on smaller screens */
+  }
 }
 
 .btn-stock.agotado {
