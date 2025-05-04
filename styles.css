@@ -547,7 +547,7 @@ quantity-selector span {
 }
 
 .image-container img {
-  max-width: 100%;
+  width: 100%;
   height: auto; /* Maintain aspect ratio */
   display: block;
   margin: 0 auto; /* Center the image */
@@ -934,5 +934,93 @@ quantity-selector span {
     font-size: 0.8rem; /* Reduce description size for mobile */
     line-height: 1.4; /* Improve readability */
     text-align: justify; /* Align text for better appearance */
+  }
+}
+
+.mandamientos-container {
+  position: absolute;
+  top: 30%; /* Maintain current position */
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns for desktop */
+  gap: 3rem 2rem; /* Increase vertical gap to 3rem, horizontal gap remains 2rem */
+  width: 90%; /* Ensure it fits within the image */
+  padding: 1rem;
+  z-index: 2; /* Ensure it appears above the image */
+}
+
+.mandamientos-title {
+  position: absolute;
+  top: 15%; /* Place above the mandamientos */
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Old Standard TT', serif;
+  font-size: 3rem; /* Increase font size */
+  font-weight: bold;
+  color: var(--gold);
+  text-align: center;
+  z-index: 2; /* Ensure it appears above the image */
+}
+
+.mandamiento {
+  background-color: rgba(0, 0, 0, 0.6); /* Slightly darker background for contrast */
+  border: 1px solid rgba(212, 175, 55, 0.3); /* Dorado envejecido */
+  border-radius: 12px;
+  padding: 1rem; /* Adjust padding */
+  color: white;
+  font-family: 'Georgia', serif;
+  text-align: center;
+  font-size: 0.9rem; /* Adjust font size */
+  transition: all 0.3s ease-in-out;
+  height: auto; /* Allow flexible height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mandamiento:hover {
+  border-color: #d4af37;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+  transform: translateY(-3px); /* Slight hover effect */
+}
+
+.mandamiento h3 {
+  font-size: 1rem; /* Adjust font size */
+  color: #d4af37;
+  margin-bottom: 0.5rem;
+}
+
+.mandamiento p {
+  font-size: 0.85rem; /* Adjust font size */
+  color: #ccc;
+  margin: 0; /* Remove extra margin */
+}
+
+@media (max-width: 768px) {
+  .mandamientos-container {
+    grid-template-columns: 1fr; /* Single column for mobile */
+    gap: 2rem; /* Increase vertical gap for smaller screens */
+    width: 95%; /* Adjust width for smaller screens */
+    top: 25%; /* Maintain current position for mobile */
+  }
+
+  .mandamientos-title {
+    top: 10%; /* Adjust title position for mobile */
+    font-size: 2rem; /* Adjust font size for mobile */
+  }
+
+  .mandamiento {
+    font-size: 0.8rem; /* Further reduce font size for mobile */
+    padding: 0.8rem; /* Adjust padding for mobile */
+  }
+
+  .mandamiento h3 {
+    font-size: 0.9rem; /* Adjust font size for mobile */
+  }
+
+  .mandamiento p {
+    font-size: 0.75rem; /* Adjust font size for mobile */
   }
 }
