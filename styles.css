@@ -553,6 +553,40 @@ quantity-selector span {
   margin: 0 auto; /* Center the image */
 }
 
+.image-container {
+  position: relative;
+  text-align: center;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 78%; /* Slightly raise the text */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+.brand-title {
+  font-family: 'Old Standard TT', serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--gold);
+  text-align: center; /* Center the title */
+  margin-bottom: 1rem;
+}
+
+.brand-description {
+  font-family: 'Times New Roman', serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: white;
+  text-shadow: 0 0 10px rgba(184, 157, 90, 0.8); /* Add glow effect */
+  text-align: left; /* Align text from left to right */
+  margin-bottom: 1rem;
+}
+
 @media (max-width: 768px) {
   .image-container img {
     max-width: 90%; /* Reduce width for smaller screens */
@@ -804,4 +838,31 @@ quantity-selector span {
 .footer-links a:hover,
 .footer-social .social-icon:hover {
   opacity: 0.9; /* Slightly increase opacity on hover */
+}
+
+.brand-header {
+  position: absolute;
+  top: 8%; /* Slightly raise the titles */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 1; /* Ensure it stays above the image */
+}
+
+.genesis-title {
+  font-family: 'Old Standard TT', serif;
+  font-size: 4rem; /* Larger font size for Génesis */
+  font-weight: bold;
+  color: var(--black); /* Change to black */
+  margin: 0;
+  text-shadow: none; /* Remove glow effect */
+}
+
+.brand-subtitle {
+  font-family: 'Times New Roman', serif;
+  font-size: 1.8rem; /* Slightly larger font size for BRAND */
+  font-weight: normal;
+  color: var(--black); /* Change to black */
+  margin: -1.5rem 0 0; /* Raise the subtitle closer to Génesis */
+  text-shadow: none; /* Remove glow effect */
 }
