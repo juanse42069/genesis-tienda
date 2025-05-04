@@ -669,12 +669,12 @@ quantity-selector span {
   }
 
   .genesis-title {
-    font-size: 3rem; /* Adjust font size for mobile */
+    font-size: 2.5rem; /* Adjust font size for mobile */
   }
 
   .brand-subtitle {
-    font-size: 1.5rem; /* Adjust font size for mobile */
-    margin: -1rem 0 0; /* Adjust spacing for mobile */
+    font-size: 1.2rem; /* Adjust font size for mobile */
+    margin: -0.8rem 0 0; /* Adjust spacing for mobile */
   }
 
   .text-overlay {
@@ -690,6 +690,41 @@ quantity-selector span {
   .brand-description {
     font-size: 0.9rem; /* Adjust description size for mobile */
     line-height: 1.4; /* Improve readability on smaller screens */
+  }
+
+  .image-container img {
+    width: 100vw; /* Ensure the image spans the full width of the viewport */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Crop the sides of the image */
+    object-position: center; /* Center the image content */
+  }
+
+  .image-container {
+    overflow: hidden; /* Hide the cropped parts of the image */
+  }
+
+  .text-overlay {
+    width: 90%; /* Ensure text doesn't touch the edges */
+    padding: 1rem;
+    font-size: 0.8rem; /* Adjust font size for readability */
+    line-height: 1.4;
+    text-align: justify; /* Align text for better appearance */
+  }
+
+  .brand-header {
+    top: 10%; /* Adjust position for mobile */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  .genesis-title {
+    font-size: 2.5rem; /* Reduce font size for mobile */
+  }
+
+  .brand-subtitle {
+    font-size: 1.2rem; /* Reduce font size for mobile */
+    margin: -0.8rem 0 0; /* Adjust spacing for mobile */
   }
 }
 
@@ -934,5 +969,40 @@ quantity-selector span {
     font-size: 0.8rem; /* Reduce description size for mobile */
     line-height: 1.4; /* Improve readability */
     text-align: justify; /* Align text for better appearance */
+  }
+
+  .image-container img {
+    width: 100vw; /* Ensure the image spans the full width of the viewport */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Crop the sides of the image */
+    object-position: center; /* Center the image content */
+  }
+
+  .image-container {
+    overflow: hidden; /* Hide the cropped parts of the image */
+  }
+
+  .text-overlay {
+    width: 90%; /* Ensure text doesn't touch the edges */
+    padding: 1rem;
+    font-size: 0.8rem; /* Adjust font size for readability */
+    line-height: 1.4;
+    text-align: justify; /* Align text for better appearance */
+  }
+
+  .brand-header {
+    top: 10%; /* Adjust position for mobile */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  .genesis-title {
+    font-size: 2.5rem; /* Reduce font size for mobile */
+  }
+
+  .brand-subtitle {
+    font-size: 1.2rem; /* Reduce font size for mobile */
+    margin: -0.8rem 0 0; /* Adjust spacing for mobile */
   }
 }
