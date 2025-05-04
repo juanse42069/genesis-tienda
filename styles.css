@@ -250,11 +250,14 @@ a, button, img {
   font-size: 2.2rem;
   color: var(--gold);
   margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Emboss effect */
+  text-align: center; /* Center the title */
 }
 
 .about p, .contact p {
   font-size: 1.5rem;
   line-height: 1.6;
+  text-align: center; /* Center the text below the title */
 }
 
 footer {
@@ -575,16 +578,18 @@ quantity-selector span {
   color: var(--gold);
   text-align: center; /* Center the title */
   margin-bottom: 1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Emboss effect */
 }
 
 .brand-description {
   font-family: 'Times New Roman', serif;
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.2rem; /* Increased font size */
+  line-height: 1.8; /* Improved readability */
   color: white;
   text-shadow: 0 0 10px rgba(184, 157, 90, 0.8); /* Add glow effect */
-  text-align: left; /* Align text from left to right */
+  text-align: justify; /* Align text from left to right */
   margin-bottom: 1rem;
+  width: 90%; /* Adjust width to span more across the image */
 }
 
 @media (max-width: 768px) {
@@ -882,20 +887,20 @@ quantity-selector span {
 
 .genesis-title {
   font-family: 'Old Standard TT', serif;
-  font-size: 4rem; /* Larger font size for Génesis */
+  font-size: 5rem; /* Increased size for Génesis */
   font-weight: bold;
   color: var(--black); /* Change to black */
   margin: 0;
-  text-shadow: none; /* Remove glow effect */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Emboss effect */
 }
 
 .brand-subtitle {
   font-family: 'Times New Roman', serif;
-  font-size: 1.8rem; /* Slightly larger font size for BRAND */
+  font-size: calc(5rem * 0.45); /* Scales proportionally to Génesis */
   font-weight: normal;
   color: var(--black); /* Change to black */
   margin: -1.5rem 0 0; /* Raise the subtitle closer to Génesis */
-  text-shadow: none; /* Remove glow effect */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Emboss effect */
 }
 
 @media (max-width: 768px) {
@@ -961,6 +966,7 @@ quantity-selector span {
   color: var(--gold);
   text-align: center;
   z-index: 2; /* Ensure it appears above the image */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Emboss effect */
 }
 
 .mandamiento {
@@ -990,12 +996,14 @@ quantity-selector span {
   font-size: 1rem; /* Adjust font size */
   color: #d4af37;
   margin-bottom: 0.5rem;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.8); /* Golden glow effect */
 }
 
 .mandamiento p {
   font-size: 0.85rem; /* Adjust font size */
   color: #ccc;
   margin: 0; /* Remove extra margin */
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.8); /* Golden glow effect */
 }
 
 @media (max-width: 768px) {
