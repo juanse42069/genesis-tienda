@@ -27,7 +27,7 @@ header, .main-header {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1.5rem 2rem;
+  padding: 0.6rem 1rem; /* Further reduced padding to decrease height */
   background-color: var(--white);
   border-bottom: 1px solid #eee;
   position: sticky;
