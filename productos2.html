@@ -14,15 +14,10 @@
       position: relative;
       overflow: hidden;
       height: 320px;
-      width: 220px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-      margin: 0 auto;
     }
     .product-card .image-container {
       position: relative;
@@ -63,35 +58,14 @@
       position: absolute;
       z-index: 1;
     }
-    .product-card h3,
-    .product-card p,
-    .product-card > div:not(.image-container) {
-      width: 100%;
-      text-align: center;
-    }
-    .product-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      justify-content: center;
-    }
     @media (max-width: 600px) {
       .product-card {
-        height: 260px;
-        width: 140px;
+        height: 320px;
       }
       .product-card .image-container {
-        height: 120px;
+        height: 180px;
         max-width: 100%;
       }
-    }
-    .color-indicator {
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      border: 1.5px solid #bbb;
-      box-sizing: border-box;
-      display: inline-block;
     }
   </style>
 </head>
