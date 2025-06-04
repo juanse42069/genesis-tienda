@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cosmos interior</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+  <header class="main-header">
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <a href="index.html" class="title center-title">GÉNESIS</a>
+  </header>
+
+  <nav id="navMenu" class="nav-menu">
+    <div class="nav-menu-content">
+      <button class="nav-menu-close" onclick="toggleMenu()">‹</button>
+      <a href="index.html" onclick="toggleMenu()">Inicio</a>
+      <a href="#" class="submenu-link">Colecciones</a>
+      <a href="brand.html" onclick="toggleMenu()">Brand</a>
+    </div>
+  </nav>
+
+  <div class="submenu">
+    <button class="nav-menu-close">‹</button>
+    <a href="productos.html" onclick="toggleMenu()">El Origen de Todo</a>
+    <a href="productos2.html" onclick="toggleMenu()">Creation and angels</a>
+  </div>
+
+  <section class="product-detail">
+    <div class="slider">
+      <button class="arrow left" onclick="changeSlide(-1)">&#8249;</button>
+      <img src="img/cosmos-interior.jpg" alt="Cosmos interior Frente" class="active">
+      <img src="img/cosmos-interior-back.jpg" alt="Cosmos interior Espalda">
+      <img src="img/genesis-front1.jpg" alt="Genesis Frente 1">
+      <img src="img/genesis-front2.jpg" alt="Genesis Frente 2">
+      <button class="arrow right" onclick="changeSlide(1)">&#8250;</button>
+    </div>
+    <div class="product-options">
+      <h1 style="font-family: 'Old Standard TT', serif; font-size: 2rem; font-weight: bold; color: var(--gold); margin-bottom: 1rem;">
+        Camiseta oversized, Cosmos interior, Genesis
+      </h1>
+      <label>Color:</label>
+      <div class="color-selector" style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+        <div class="color-circle" data-color="negro" style="background: #111; width: 28px; height: 28px; border-radius: 50%; border: 2px solid #ccc; cursor: pointer;"></div>
+        <div class="color-circle" data-color="crema" style="background: #f5f5dc; width: 28px; height: 28px; border-radius: 50%; border: 2px solid #ccc; cursor: pointer;"></div>
+      </div>
+
+      <label for="size">Talla:</label>
+      <div class="size-selector">
+        <div class="size-option" data-key="negro-S">S</div>
+        <div class="size-option" data-key="negro-M">M</div>
+        <div class="size-option" data-key="negro-L">L</div>
+      </div>
+      <p id="size-guide" onclick="openSizeGuide()">Guía de Tallas</p>
+      <div id="sizeGuideModal" class="modal" onclick="closeSizeGuide()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+          <img src="img/guia-tallas.jpg" alt="Guía de Tallas">
+          <button class="modal-close" onclick="closeSizeGuide()">×</button>
+        </div>
+      </div>
+
+      <label for="quantity">Cantidad:</label>
+      <div class="quantity-selector">
+        <button onclick="changeQuantity(-1)">-</button>
+        <span id="quantity">1</span>
+        <button onclick="changeQuantity(1)">+</button>
+      </div>
+      <p style="font-family: 'Old Standard TT', serif; font-size: 1.2rem; color: var(--black); margin-top: 0.5rem;">Precio: $119,000 COP</p>
+      <button onclick="makeOrder()">Hacer Pedido</button>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3 class="footer-title">GÉNESIS</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="productos.html">Colecciones</a></li>
+          <li><a href="index.html#sobre-nosotros">Sobre nosotros</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-title">INFORMACIÓN</h3>
+        <ul class="footer-links">
+          <li><a href="#">Políticas de Cambios y Devoluciones</a></li>
+          <li><a href="#">Políticas de Envíos</a></li>
+          <li><a href="#">Políticas de Privacidad</a></li>
+          <li><a href="#">Términos y Condiciones</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3 class="footer-title">¿CÓMO COMPRAR?</h3>
+        <ol class="footer-list">
+          <li>Explora los productos.</li>
+          <li>Elige talla y color disponibles.</li>
+          <li>Haz clic en comprar y serás redirigido a WhatsApp.</li>
+          <li>Coordina el pago por Nequi o Bancolombia.</li>
+          <li>Recibe tu pedido en casa.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-social">
+        <a href="https://instagram.com/genesis.1.00" target="_blank" class="social-icon">Instagram</a>
+        <div class="separator"></div>
+        <a href="mailto:genesiswearline@gmail.com" class="social-icon">genesiswearline@gmail.com</a>
+      </div>
+      <div class="footer-language">ESPAÑOL ▼</div>
+      <p class="footer-note">Síguenos en Instagram para lanzamientos exclusivos.</p>
+      <p class="footer-copyright">© 2025 – GÉNESIS WEAR</p>
+    </div>
+  </footer>
+
+  <script>
+    let selectedSize = null;
+    let selectedColor = null;
+    let quantity = 1;
+    let currentSlide = 0;
+    let stock = {};
+
+    async function fetchStock() {
+      const inventoryUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ1GmPqpqeJwtefR3tM2hndAI5meeDVRjDljqanIFwGno_VogkYgi-6x1dAVErf_i7QjRP0IfB9c_fF/pub?gid=0&single=true&output=csv";
+      try {
+        const response = await fetch(inventoryUrl, { cache: "no-store" });
+        const csvData = await response.text();
+        const rows = csvData.split("\n").slice(1).filter(row => row.trim() !== "");
+        stock = rows.reduce((acc, row) => {
+          const [color, size, quantity] = row.split(",");
+          const key = `${color.toLowerCase()}-${size.toUpperCase()}`;
+          acc[key] = parseInt(quantity, 10);
+          return acc;
+        }, {});
+      } catch (error) {
+        console.error("Error fetching stock data:", error);
+      }
+    }
+
+    document.querySelectorAll('.color-circle').forEach(circle => {
+      circle.addEventListener('click', () => {
+        document.querySelectorAll('.color-circle').forEach(c => c.classList.remove('selected'));
+        circle.classList.add('selected');
+        selectedColor = circle.dataset.color;
+        selectedSize = null;
+        document.querySelectorAll('.size-option').forEach(option => option.classList.remove('selected'));
+        quantity = 1;
+        document.getElementById('quantity').textContent = quantity;
+      });
+    });
+
+    const style = document.createElement('style');
+    style.innerHTML = `
+      .color-circle.selected {
+        box-shadow: 0 0 0 3px var(--gold, #d4af37), 0 0 8px 2px #fff;
+        border-color: var(--gold, #d4af37);
+      }
+    `;
+    document.head.appendChild(style);
+
+    function selectSize(size) {
+      if (!selectedColor) {
+        alert('Por favor selecciona un color.');
+        return;
+      }
+      selectedSize = size;
+      document.querySelectorAll('.size-option').forEach(option => option.classList.remove('selected'));
+      document.querySelectorAll('.size-option').forEach(option => {
+        if (option.textContent === size) option.classList.add('selected');
+      });
+      quantity = 1;
+      document.getElementById('quantity').textContent = quantity;
+    }
+
+    document.querySelectorAll('.size-option').forEach(option => {
+      option.addEventListener('click', () => {
+        if (!option.classList.contains('unavailable')) {
+          selectSize(option.dataset.key.split('-')[1]);
+        }
+      });
+    });
+
+    function openSizeGuide() {
+      document.getElementById('sizeGuideModal').classList.add('show');
+    }
+
+    function closeSizeGuide() {
+      document.getElementById('sizeGuideModal').classList.remove('show');
+    }
+
+    function changeQuantity(change) {
+      if (!selectedSize || !selectedColor) {
+        alert('Por favor selecciona un color y una talla.');
+        return;
+      }
+      const maxQuantity = stock[`${selectedColor}-${selectedSize}`] || 0;
+      quantity = Math.max(1, Math.min(maxQuantity, quantity + change));
+      document.getElementById('quantity').textContent = quantity;
+    }
+
+    function makeOrder() {
+      if (!selectedSize || !selectedColor) {
+        alert('Por favor selecciona un color y una talla.');
+        return;
+      }
+      const colorText = selectedColor === 'negro' ? 'negra' : 'crema';
+      const message = `Hola Genesis, deseo ordenar la camisa "Cosmos interior", color ${colorText}, talla ${selectedSize}, cantidad ${quantity}.`;
+      window.open(`https://wa.me/573176650424?text=${encodeURIComponent(message)}`);
+    }
+
+    function changeSlide(direction) {
+      const slides = document.querySelectorAll('.slider img');
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + direction + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }
+
+    fetchStock();
+  </script>
+  <script src="menu.js"></script>
+</body>
+</html>
